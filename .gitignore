@@ -4,6 +4,4 @@ node_modules/
 *.log
 
 # Logo design comparison files (local reference only)
-logo-compare.html
-logo-compare-2.html
-logo[0-9].png
+Design/
