@@ -185,6 +185,16 @@ img {
   font-size: 1.5rem;
 }
 
+.nav-logo-img {
+  height: 38px;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.footer-logo-img {
+  height: 44px;
+}
+
 .nav-logo {
   display: inline-flex;
   align-items: center;
