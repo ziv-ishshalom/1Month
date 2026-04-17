@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B4UGO — Technical Review | 1Month</title>
+  <meta name="description"
+    content="In-depth technical architecture review of B4UGO — a location-based shopping reminder app with 3 NestJS microservices, PostGIS, Cloud Run, and AI-powered categorization." />
+  <meta name="theme-color" content="#0A0A0F" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="tech-review.css" />
+</head>
+
+<body>
+
+  <!-- ============================== AMBIENT BG ============================== -->
+  <div class="ambient-orb ambient-orb--1"></div>
+  <div class="ambient-orb ambient-orb--2"></div>
+  <div class="ambient-orb ambient-orb--3"></div>
+
+  <!-- ============================== NAVIGATION ============================== -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo-composite.png" alt="1Month" class="nav-logo-img" />
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#apps" class="nav-link">Portfolio</a></li>
+        <li><a href="tech-review-b4ugo.html" class="nav-link active">B4UGO</a></li>
+        <li><a href="tech-review-cityfix.html" class="nav-link">CityFix</a></li>
+        <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== HERO ============================== -->
+  <section class="tr-hero">
+    <div class="tr-hero-inner">
+      <div class="tr-breadcrumb">
+        <a href="index.html">1Month</a>
+        <span class="tr-breadcrumb-sep">›</span>
+        <a href="index.html#apps">Portfolio</a>
+        <span class="tr-breadcrumb-sep">›</span>
+        <span class="tr-breadcrumb-current">B4UGO</span>
+      </div>
+      <div class="tr-hero-badge tr-badge--teal">Technical Review</div>
+      <h1 class="tr-hero-title">
+        B4UGO
+        <span class="tr-hero-subtitle-inline">Platform Architecture</span>
+      </h1>
+      <p class="tr-hero-desc">
+        Location-based shopping reminder app — 3 NestJS microservices, PostGIS spatial queries,
+        AI-powered categorization, Cloud Run serverless, and real-time geofencing across iOS & Android.
+      </p>
+      <div class="tr-hero-stats">
+        <div class="tr-stat">
+          <span class="tr-stat-number">3</span>
+          <span class="tr-stat-label">Microservices</span>
+        </div>
+        <div class="tr-stat">
+          <span class="tr-stat-number">5</span>
+          <span class="tr-stat-label">Cloud Run Services</span>
+        </div>
+        <div class="tr-stat">
+          <span class="tr-stat-number">70</span>
+          <span class="tr-stat-label">Secured Endpoints</span>
+        </div>
+        <div class="tr-stat">
+          <span class="tr-stat-number">8</span>
+          <span class="tr-stat-label">Languages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MAIN CONTENT ============================== -->
+  <main class="tr-main">
+
+    <!-- Sidebar TOC -->
+    <aside class="tr-sidebar">
+      <div class="tr-toc">
+        <h3 class="tr-toc-title">Contents</h3>
+        <ul class="tr-toc-list">
+          <li><a href="#overview" class="tr-toc-link active">Platform Overview</a></li>
+          <li><a href="#tech-stack" class="tr-toc-link">Tech Stack</a></li>
+          <li><a href="#architecture" class="tr-toc-link">Architecture</a></li>
+          <li><a href="#diagrams" class="tr-toc-link">Architecture Diagrams</a></li>
+          <li><a href="#services" class="tr-toc-link">Service Breakdown</a></li>
+          <li><a href="#database" class="tr-toc-link">Database Design</a></li>
+          <li><a href="#infrastructure" class="tr-toc-link">Infrastructure</a></li>
+          <li><a href="#devops" class="tr-toc-link">DevOps & CI/CD</a></li>
+          <li><a href="#decisions" class="tr-toc-link">Key Decisions</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Content -->
+    <div class="tr-content">
+
+      <!-- ── Platform Overview ── -->
+      <section class="tr-section" id="overview">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">🛒</span>
+          <h2 class="tr-section-title">Platform Overview</h2>
+        </div>
+        <div class="tr-card">
+          <p class="tr-text">
+            <strong>B4.U.GO</strong> is a <strong>location-based shopping reminder app</strong>. Users add items to
+            their shopping list and associate them with stores. Using <strong>geofencing</strong>, the app reminds
+            users to buy items exactly when they're near the relevant store.
+          </p>
+          <blockquote class="tr-quote">
+            "Never forget to buy essentials again. B4.U.GO reminds you to shop when you are near the store."
+          </blockquote>
+          <div class="tr-feature-grid">
+            <div class="tr-feature">
+              <span class="tr-feature-icon">📍</span>
+              <div>
+                <strong>Location-Based Triggers</strong>
+                <p>Geofencing alerts when near a store</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🔔</span>
+              <div>
+                <strong>Contextual Reminders</strong>
+                <p>Only notifies when the user can take action</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🧮</span>
+              <div>
+                <strong>Smart Sorting</strong>
+                <p>Auto-groups items by store category</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🔒</span>
+              <div>
+                <strong>Private by Design</strong>
+                <p>Location processed locally on device</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🔋</span>
+              <div>
+                <strong>Battery Optimized</strong>
+                <p>OS-level region monitoring (app sleeps until arrival)</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🤖</span>
+              <div>
+                <strong>AI Categorization</strong>
+                <p>Gemini-powered store categorization</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tech Stack ── -->
+      <section class="tr-section" id="tech-stack">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">⚙️</span>
+          <h2 class="tr-section-title">Tech Stack</h2>
+        </div>
+        <div class="tr-card">
+          <div class="tr-table-wrap">
+            <table class="tr-table">
+              <thead>
+                <tr>
+                  <th>Layer</th>
+                  <th>Technology</th>
+                  <th>Version</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--mobile">Mobile App</span></td>
+                  <td>React Native + Expo</td>
+                  <td><code>Expo SDK 54, RN 0.81</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--web">Admin Dashboard</span></td>
+                  <td>Next.js + React + Tailwind CSS v4</td>
+                  <td><code>Next.js 16, React 19</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--web">Marketing Website</span></td>
+                  <td>Next.js + React + Tailwind CSS v4</td>
+                  <td><code>Next.js 16, React 19</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--backend">Backend Services</span></td>
+                  <td>NestJS (TypeScript)</td>
+                  <td><code>NestJS 11, Node 20</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--data">ORM</span></td>
+                  <td>Prisma</td>
+                  <td><code>v7.2</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--data">Database</span></td>
+                  <td>PostgreSQL 16 + PostGIS</td>
+                  <td><code>Cloud SQL</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--data">Cache</span></td>
+                  <td>Redis (Upstash Serverless)</td>
+                  <td><code>via ioredis</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--ai">AI</span></td>
+                  <td>Google Gemini API</td>
+                  <td><code>@google/generative-ai</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--web">Maps</span></td>
+                  <td>Google Maps Services JS + Leaflet</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--ops">Monitoring</span></td>
+                  <td>Sentry</td>
+                  <td><code>@sentry/nestjs, @sentry/react-native</code></td>
+                </tr>
+                <tr>
+                  <td><span class="tr-layer-badge tr-layer--backend">Language</span></td>
+                  <td>TypeScript (100%)</td>
+                  <td><code>v5.x</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Architecture ── -->
+      <section class="tr-section" id="architecture">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">🏗️</span>
+          <h2 class="tr-section-title">Architecture</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Monorepo Structure</h3>
+          <pre class="tr-code"><code>Choers/
+├── apps/
+│   ├── auth-service/       # NestJS — Authentication & Users
+│   ├── items-service/      # NestJS — Items, Stores, Maps, Barcodes
+│   ├── scan-service/       # NestJS — Store Scanning & AI Categorization
+│   ├── admin-web/          # Next.js — Admin Dashboard
+│   ├── website/            # Next.js — Public Marketing Website
+│   └── mobile/             # React Native / Expo — Mobile App
+├── deploy/cloudrun/        # Cloud Run service YAML definitions
+├── .github/workflows/      # CI/CD pipeline definitions
+├── firebase.json           # Firebase Hosting routing config
+└── tests/load/             # k6 load testing scripts</code></pre>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Microservices Architecture</h3>
+          <div class="tr-arch-diagram">
+            <div class="tr-arch-row">
+              <div class="tr-arch-group">
+                <div class="tr-arch-group-label">Clients</div>
+                <div class="tr-arch-nodes">
+                  <div class="tr-arch-node tr-arch-node--client">📱 Mobile App<br><small>React Native / Expo</small></div>
+                  <div class="tr-arch-node tr-arch-node--client">🖥️ Admin Dashboard<br><small>Next.js</small></div>
+                  <div class="tr-arch-node tr-arch-node--client">🌐 Website<br><small>Next.js</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="tr-arch-arrow">▼</div>
+            <div class="tr-arch-row">
+              <div class="tr-arch-group">
+                <div class="tr-arch-group-label">Firebase Hosting (CDN + SSL)</div>
+                <div class="tr-arch-nodes">
+                  <div class="tr-arch-node tr-arch-node--infra">🔥 Path-Based Routing</div>
+                </div>
+              </div>
+            </div>
+            <div class="tr-arch-arrow">▼</div>
+            <div class="tr-arch-row">
+              <div class="tr-arch-group">
+                <div class="tr-arch-group-label">Cloud Run — me-west1</div>
+                <div class="tr-arch-nodes">
+                  <div class="tr-arch-node tr-arch-node--service">🔐 auth-service</div>
+                  <div class="tr-arch-node tr-arch-node--service">📦 items-service</div>
+                  <div class="tr-arch-node tr-arch-node--service">🔍 scan-service</div>
+                  <div class="tr-arch-node tr-arch-node--service">🖥️ admin-web</div>
+                  <div class="tr-arch-node tr-arch-node--service">🌐 website</div>
+                </div>
+              </div>
+            </div>
+            <div class="tr-arch-arrow">▼</div>
+            <div class="tr-arch-row">
+              <div class="tr-arch-group">
+                <div class="tr-arch-group-label">Data Layer</div>
+                <div class="tr-arch-nodes">
+                  <div class="tr-arch-node tr-arch-node--data">🐘 Cloud SQL<br><small>PostgreSQL 16 + PostGIS</small></div>
+                  <div class="tr-arch-node tr-arch-node--data">⚡ Upstash Redis</div>
+                  <div class="tr-arch-node tr-arch-node--data">☁️ GCS<br><small>b4ugo-uploads</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Architecture Diagrams ── -->
+      <section class="tr-section" id="diagrams">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">📊</span>
+          <h2 class="tr-section-title">Architecture Diagrams</h2>
+        </div>
+
+        <div class="arch-grid">
+          <!-- Software Architecture -->
+          <div class="arch-panel">
+            <div class="arch-label">Software Architecture</div>
+            <img src="assets/diagrams/b4ugo-software-architecture.png"
+                 alt="B4UGO Software Architecture — 3 NestJS microservices behind Firebase Hosting, connecting to PostgreSQL, Redis, Cloud Storage, and Gemini AI"
+                 class="arch-img" loading="lazy">
+            <div class="arch-caption">Clients → Firebase Hosting → NestJS Microservices → Data Layer</div>
+          </div>
+
+          <!-- Deployment Architecture -->
+          <div class="arch-panel">
+            <div class="arch-label">Deployment Architecture</div>
+            <img src="assets/diagrams/b4ugo-deployment-architecture.png"
+                 alt="B4UGO Deployment Architecture — Users to Firebase CDN to Cloud Run services, with Cloud SQL, CI/CD pipeline, and WIF"
+                 class="arch-img" loading="lazy">
+            <div class="arch-caption">Users → Firebase CDN → Cloud Run (me-west1) → Cloud SQL / Redis / GCS</div>
+          </div>
+        </div>
+      </section>
+      <section class="tr-section" id="services">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">🔧</span>
+          <h2 class="tr-section-title">Service Breakdown</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">🔐 auth-service</h3>
+          <p class="tr-text tr-text--muted">User identity, OAuth social logins, JWT token lifecycle, push notifications, analytics events.</p>
+          <div class="tr-table-wrap">
+            <table class="tr-table tr-table--compact">
+              <thead>
+                <tr><th>Module</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>AuthModule</code></td><td>Google / Facebook / Apple OAuth via Passport.js, JWT issuing</td></tr>
+                <tr><td><code>UsersModule</code></td><td>User CRUD, profile & role management</td></tr>
+                <tr><td><code>RedisModule</code></td><td>Session caching, token blacklisting</td></tr>
+                <tr><td><code>PushModule</code></td><td>Push notification registration and dispatch</td></tr>
+                <tr><td><code>AnalyticsModule</code></td><td>User event tracking (app_open, item_added, etc.)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tr-callout">
+            <strong>Notable:</strong> Custom Passport guards preserve the OAuth <code>state</code> parameter through Firebase Hosting, which strips non-<code>__session</code> cookies. Mobile deep-link redirect via <code>b4ugo://auth/callback</code>.
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">📦 items-service</h3>
+          <p class="tr-text tr-text--muted">Core business logic — shopping items, stores, maps, chains, barcodes, feedback, file uploads.</p>
+          <div class="tr-table-wrap">
+            <table class="tr-table tr-table--compact">
+              <thead>
+                <tr><th>Module</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>ItemsModule</code></td><td>Shopping item CRUD, bulk ops, status management</td></tr>
+                <tr><td><code>StoresModule</code></td><td>Store CRUD, PostGIS geospatial nearby search (<code>ST_Distance</code>), Google Places caching</td></tr>
+                <tr><td><code>MapsModule</code></td><td>KMZ/CSV geography imports for custom store maps</td></tr>
+                <tr><td><code>ChainsModule</code></td><td>Global chain store management (VIP stores for paid chains)</td></tr>
+                <tr><td><code>BarcodeModule</code></td><td>UPC/EAN barcode lookup</td></tr>
+                <tr><td><code>FeedbackModule</code></td><td>User-submitted store feedback/reports</td></tr>
+                <tr><td><code>UploadModule</code></td><td>Image uploads to GCS bucket</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tr-callout">
+            <strong>Notable:</strong> PostGIS <code>geometry(Point, 4326)</code> column with GiST index for spatial queries. PostGIS extension installed in the <code>items</code> schema (not <code>public</code>) for Prisma multi-schema compatibility.
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">🔍 scan-service</h3>
+          <p class="tr-text tr-text--muted">AI-powered store scanning/categorization, taxonomy management, analytics dashboards.</p>
+          <div class="tr-table-wrap">
+            <table class="tr-table tr-table--compact">
+              <thead>
+                <tr><th>Module</th><th>Purpose</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>TaxonomyModule</code></td><td>Category & keyword management (multilingual: en/he), Google Product Taxonomy mapping</td></tr>
+                <tr><td><code>RedisModule</code></td><td>AI categorization result caching, scan metrics</td></tr>
+                <tr><td><code>AuthModule</code></td><td>JWT verification</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tr-callout">
+            <strong>Notable:</strong> Uses <strong>Google Gemini AI</strong> for intelligent store categorization. Google Maps Places API for store discovery. Scan results cached in Redis to reduce API costs.
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Database ── -->
+      <section class="tr-section" id="database">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">🗃️</span>
+          <h2 class="tr-section-title">Database Design</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Schema Architecture</h3>
+          <p class="tr-text">Single PostgreSQL 16 instance with <strong>multiple schemas</strong> — each service connects via Prisma with its own isolated schema (bounded context):</p>
+          <div class="tr-table-wrap">
+            <table class="tr-table">
+              <thead>
+                <tr><th>Prisma Config</th><th>DB Schema</th><th>Service</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>auth-service/prisma/schema.prisma</code></td><td><code>auth</code></td><td>auth-service</td></tr>
+                <tr><td><code>items-service/prisma/schema.prisma</code></td><td><code>items</code> + <code>public</code></td><td>items-service</td></tr>
+                <tr><td><code>scan-service/prisma/schema.prisma</code></td><td><code>scan</code></td><td>scan-service</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Core Entities</h3>
+          <div class="tr-entity-grid">
+            <div class="tr-entity">
+              <div class="tr-entity-header">
+                <span class="tr-entity-icon">👤</span>
+                <span>User</span>
+              </div>
+              <ul class="tr-entity-fields">
+                <li><code>uuid id</code> <span class="tr-field-badge">PK</span></li>
+                <li><code>string email</code> <span class="tr-field-badge tr-field-badge--unique">UK</span></li>
+                <li><code>enum role</code> USER | ADMIN</li>
+                <li><code>enum status</code> ACTIVE | DISABLED | BANNED</li>
+                <li><code>enum subscription</code> FREE | PRO | PLUS</li>
+              </ul>
+            </div>
+            <div class="tr-entity">
+              <div class="tr-entity-header">
+                <span class="tr-entity-icon">📝</span>
+                <span>Item</span>
+              </div>
+              <ul class="tr-entity-fields">
+                <li><code>uuid id</code> <span class="tr-field-badge">PK</span></li>
+                <li><code>string name</code></li>
+                <li><code>enum status</code> ACTIVE | DONE | DELETED</li>
+                <li><code>int quantity</code></li>
+                <li><code>string barcode</code></li>
+                <li><code>uuid mapId</code> <span class="tr-field-badge tr-field-badge--fk">FK</span></li>
+              </ul>
+            </div>
+            <div class="tr-entity">
+              <div class="tr-entity-header">
+                <span class="tr-entity-icon">🏪</span>
+                <span>Store</span>
+              </div>
+              <ul class="tr-entity-fields">
+                <li><code>uuid id</code> <span class="tr-field-badge">PK</span></li>
+                <li><code>string name</code></li>
+                <li><code>enum type</code> PERSONAL | GLOBAL | GOOGLE</li>
+                <li><code>geometry location</code> PostGIS Point 4326</li>
+                <li><code>string placeId</code> <span class="tr-field-badge tr-field-badge--unique">UK</span></li>
+                <li><code>string[] categories</code></li>
+              </ul>
+            </div>
+            <div class="tr-entity">
+              <div class="tr-entity-header">
+                <span class="tr-entity-icon">🗂️</span>
+                <span>Category</span>
+              </div>
+              <ul class="tr-entity-fields">
+                <li><code>uuid id</code> <span class="tr-field-badge">PK</span></li>
+                <li><code>string name</code> <span class="tr-field-badge tr-field-badge--unique">UK</span></li>
+                <li><code>string[] googleTypes</code></li>
+                <li><code>int taxonomyId</code></li>
+              </ul>
+            </div>
+          </div>
+          <div class="tr-callout tr-callout--info">
+            <strong>Cross-Service Decoupling:</strong> <code>items-service</code> and <code>scan-service</code> store <code>userId</code> as a plain string — <strong>no foreign key</strong> to the <code>auth</code> schema. Auth-service is the single source of truth for user identity.
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Infrastructure ── -->
+      <section class="tr-section" id="infrastructure">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">☁️</span>
+          <h2 class="tr-section-title">Infrastructure</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">GCP Deployment Architecture</h3>
+          <div class="tr-infra-map">
+            <div class="tr-infra-tier">
+              <div class="tr-infra-tier-label">Edge CDN</div>
+              <div class="tr-infra-nodes">
+                <div class="tr-infra-node tr-infra-node--cdn">
+                  <span class="tr-infra-node-icon">🔥</span>
+                  <strong>Firebase Hosting</strong>
+                  <div class="tr-infra-node-details">
+                    <span class="tr-infra-detail">api.buyb4ugo.com</span>
+                    <span class="tr-infra-detail">admin.buyb4ugo.com</span>
+                    <span class="tr-infra-detail">buyb4ugo.com</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tr-infra-connector">│</div>
+            <div class="tr-infra-tier">
+              <div class="tr-infra-tier-label">Compute — Cloud Run (me-west1)</div>
+              <div class="tr-infra-nodes tr-infra-nodes--wrap">
+                <div class="tr-infra-node tr-infra-node--compute">auth-service</div>
+                <div class="tr-infra-node tr-infra-node--compute">items-service</div>
+                <div class="tr-infra-node tr-infra-node--compute">scan-service</div>
+                <div class="tr-infra-node tr-infra-node--compute">admin-web</div>
+                <div class="tr-infra-node tr-infra-node--compute">website</div>
+              </div>
+            </div>
+            <div class="tr-infra-connector">│</div>
+            <div class="tr-infra-tier">
+              <div class="tr-infra-tier-label">Data Layer</div>
+              <div class="tr-infra-nodes">
+                <div class="tr-infra-node tr-infra-node--data">🐘 Cloud SQL<br>PostgreSQL 16 + PostGIS</div>
+                <div class="tr-infra-node tr-infra-node--data">⚡ Upstash Redis</div>
+                <div class="tr-infra-node tr-infra-node--data">☁️ GCS Bucket</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Firebase Hosting Routing</h3>
+          <div class="tr-table-wrap">
+            <table class="tr-table">
+              <thead>
+                <tr><th>Domain</th><th>API Routes</th><th>Catch-all</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>api.buyb4ugo.com</code></td>
+                  <td>Auth, Items, Scan routes via path prefix</td>
+                  <td>None</td>
+                </tr>
+                <tr>
+                  <td><code>admin.buyb4ugo.com</code></td>
+                  <td>Same API routes</td>
+                  <td><code>**</code> → admin-web</td>
+                </tr>
+                <tr>
+                  <td><code>buyb4ugo.com</code></td>
+                  <td>—</td>
+                  <td><code>**</code> → website</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DevOps ── -->
+      <section class="tr-section" id="devops">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">🚀</span>
+          <h2 class="tr-section-title">DevOps & CI/CD</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Pipeline Overview</h3>
+          <div class="tr-pipeline">
+            <div class="tr-pipeline-stage">
+              <div class="tr-pipeline-stage-header">
+                <span class="tr-pipeline-number">①</span>
+                <strong>CI (ci.yml)</strong>
+              </div>
+              <ul class="tr-pipeline-list">
+                <li>Backend: Lint & Test (matrix: auth, items, scan)</li>
+                <li>Web: Lint & Build (matrix: admin-web, website)</li>
+                <li>Mobile: Jest Tests</li>
+                <li>Docker Build Smoke Test (all 5 services)</li>
+              </ul>
+              <div class="tr-pipeline-trigger">Trigger: push to main, Pull Request</div>
+            </div>
+            <div class="tr-pipeline-arrow">→</div>
+            <div class="tr-pipeline-stage">
+              <div class="tr-pipeline-stage-header">
+                <span class="tr-pipeline-number">②</span>
+                <strong>Deploy (deploy-cloudrun.yml)</strong>
+              </div>
+              <ul class="tr-pipeline-list">
+                <li>Detect Changed Services (<code>git diff HEAD~1</code>)</li>
+                <li>GCP Auth via WIF (Keyless OIDC)</li>
+                <li>Cloud Build → Artifact Registry</li>
+                <li><code>gcloud run services replace</code></li>
+                <li>Health Check (curl all endpoints)</li>
+              </ul>
+              <div class="tr-pipeline-trigger">Trigger: CI passes on main, Manual dispatch</div>
+            </div>
+            <div class="tr-pipeline-arrow">→</div>
+            <div class="tr-pipeline-stage">
+              <div class="tr-pipeline-stage-header">
+                <span class="tr-pipeline-number">③</span>
+                <strong>Mobile (mobile-build.yml)</strong>
+              </div>
+              <ul class="tr-pipeline-list">
+                <li>EAS Build (iOS / Android)</li>
+                <li>TestFlight Submit (optional)</li>
+              </ul>
+              <div class="tr-pipeline-trigger">Trigger: Tag mobile-v*, Manual dispatch</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Key Decisions ── -->
+      <section class="tr-section" id="decisions">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">💡</span>
+          <h2 class="tr-section-title">Key Architectural Decisions</h2>
+        </div>
+
+        <div class="tr-card">
+          <div class="tr-decisions-grid">
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Multi-schema Single DB</h4>
+              <p>Each service has its own Prisma schema (<code>auth</code>, <code>items</code>, <code>scan</code>) as bounded contexts, sharing one PostgreSQL instance for cost efficiency.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Firebase Hosting as Ingress</h4>
+              <p>Global CDN + SSL + path routing — needed because <code>me-west1</code> doesn't support direct Cloud Run domain mappings.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Shared JWT Secret</h4>
+              <p>All backend services verify tokens independently without inter-service calls.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">userId as Plain String</h4>
+              <p>Items/scan services reference users by ID string (no FK) — intentional decoupling from auth schema.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">PostGIS in items Schema</h4>
+              <p>Required for Prisma's <code>multiSchema</code> feature to keep spatial functions in the working schema.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Upstash over Memorystore</h4>
+              <p>Serverless Redis for cost efficiency and TLS-native from Cloud Run.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Selective Deployment</h4>
+              <p><code>git diff</code>-based change detection deploys only affected services.</p>
+            </div>
+            <div class="tr-decision">
+              <h4 class="tr-decision-title">Monorepo</h4>
+              <p>All services, web apps, and mobile app in one repo with scoped linting and selective CI/CD.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo-composite.png" alt="1Month" class="nav-logo-img footer-logo-img" />
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="tech-review-b4ugo.html">B4UGO Tech</a>
+        <a href="tech-review-cityfix.html">CityFix Tech</a>
+      </div>
+      <p class="footer-copy">© 2026 1Month · Built with AI-first methodology.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="tech-review.js"></script>
+</body>
+
+</html>
