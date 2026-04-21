@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B4UGO — Technical Review | 1Month</title>
+  <title>B4UGO - Technical Review | 1Month</title>
   <meta name="description"
-    content="In-depth technical architecture review of B4UGO — a location-based shopping reminder app with 3 NestJS microservices, PostGIS, Cloud Run, and AI-powered categorization." />
+    content="In-depth technical architecture review of B4UGO - a location-based shopping reminder app with 3 NestJS microservices, PostGIS, Cloud Run, and AI-powered categorization." />
   <meta name="theme-color" content="#0A0A0F" />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
@@ -60,7 +60,7 @@
         <span class="tr-hero-subtitle-inline">Platform Architecture</span>
       </h1>
       <p class="tr-hero-desc">
-        Location-based shopping reminder app — 3 NestJS microservices, PostGIS spatial queries,
+        Location-based shopping reminder app - 3 NestJS microservices, PostGIS spatial queries,
         AI-powered categorization, Cloud Run serverless, and real-time geofencing across iOS & Android.
       </p>
       <div class="tr-hero-stats">
@@ -230,7 +230,7 @@
                 <tr>
                   <td><span class="tr-layer-badge tr-layer--web">Maps</span></td>
                   <td>Google Maps Services JS + Leaflet</td>
-                  <td>—</td>
+                  <td>-</td>
                 </tr>
                 <tr>
                   <td><span class="tr-layer-badge tr-layer--ops">Monitoring</span></td>
@@ -259,12 +259,12 @@
           <h3 class="tr-card-title">Monorepo Structure</h3>
           <pre class="tr-code"><code>Choers/
 ├── apps/
-│   ├── auth-service/       # NestJS — Authentication & Users
-│   ├── items-service/      # NestJS — Items, Stores, Maps, Barcodes
-│   ├── scan-service/       # NestJS — Store Scanning & AI Categorization
-│   ├── admin-web/          # Next.js — Admin Dashboard
-│   ├── website/            # Next.js — Public Marketing Website
-│   └── mobile/             # React Native / Expo — Mobile App
+│   ├── auth-service/       # NestJS - Authentication & Users
+│   ├── items-service/      # NestJS - Items, Stores, Maps, Barcodes
+│   ├── scan-service/       # NestJS - Store Scanning & AI Categorization
+│   ├── admin-web/          # Next.js - Admin Dashboard
+│   ├── website/            # Next.js - Public Marketing Website
+│   └── mobile/             # React Native / Expo - Mobile App
 ├── deploy/cloudrun/        # Cloud Run service YAML definitions
 ├── .github/workflows/      # CI/CD pipeline definitions
 ├── firebase.json           # Firebase Hosting routing config
@@ -296,7 +296,7 @@
             <div class="tr-arch-arrow">▼</div>
             <div class="tr-arch-row">
               <div class="tr-arch-group">
-                <div class="tr-arch-group-label">Cloud Run — me-west1</div>
+                <div class="tr-arch-group-label">Cloud Run - me-west1</div>
                 <div class="tr-arch-nodes">
                   <div class="tr-arch-node tr-arch-node--service">🔐 auth-service</div>
                   <div class="tr-arch-node tr-arch-node--service">📦 items-service</div>
@@ -333,7 +333,7 @@
           <div class="arch-panel">
             <div class="arch-label">Software Architecture</div>
             <img src="assets/diagrams/b4ugo-software-architecture.png"
-                 alt="B4UGO Software Architecture — 3 NestJS microservices behind Firebase Hosting, connecting to PostgreSQL, Redis, Cloud Storage, and Gemini AI"
+                 alt="B4UGO Software Architecture - 3 NestJS microservices behind Firebase Hosting, connecting to PostgreSQL, Redis, Cloud Storage, and Gemini AI"
                  class="arch-img" loading="lazy">
             <div class="arch-caption">Clients → Firebase Hosting → NestJS Microservices → Data Layer</div>
           </div>
@@ -342,7 +342,7 @@
           <div class="arch-panel">
             <div class="arch-label">Deployment Architecture</div>
             <img src="assets/diagrams/b4ugo-deployment-architecture.png"
-                 alt="B4UGO Deployment Architecture — Users to Firebase CDN to Cloud Run services, with Cloud SQL, CI/CD pipeline, and WIF"
+                 alt="B4UGO Deployment Architecture - Users to Firebase CDN to Cloud Run services, with Cloud SQL, CI/CD pipeline, and WIF"
                  class="arch-img" loading="lazy">
             <div class="arch-caption">Users → Firebase CDN → Cloud Run (me-west1) → Cloud SQL / Redis / GCS</div>
           </div>
@@ -378,7 +378,7 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">📦 items-service</h3>
-          <p class="tr-text tr-text--muted">Core business logic — shopping items, stores, maps, chains, barcodes, feedback, file uploads.</p>
+          <p class="tr-text tr-text--muted">Core business logic - shopping items, stores, maps, chains, barcodes, feedback, file uploads.</p>
           <div class="tr-table-wrap">
             <table class="tr-table tr-table--compact">
               <thead>
@@ -430,7 +430,7 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">Schema Architecture</h3>
-          <p class="tr-text">Single PostgreSQL 16 instance with <strong>multiple schemas</strong> — each service connects via Prisma with its own isolated schema (bounded context):</p>
+          <p class="tr-text">Single PostgreSQL 16 instance with <strong>multiple schemas</strong> - each service connects via Prisma with its own isolated schema (bounded context):</p>
           <div class="tr-table-wrap">
             <table class="tr-table">
               <thead>
@@ -503,7 +503,7 @@
             </div>
           </div>
           <div class="tr-callout tr-callout--info">
-            <strong>Cross-Service Decoupling:</strong> <code>items-service</code> and <code>scan-service</code> store <code>userId</code> as a plain string — <strong>no foreign key</strong> to the <code>auth</code> schema. Auth-service is the single source of truth for user identity.
+            <strong>Cross-Service Decoupling:</strong> <code>items-service</code> and <code>scan-service</code> store <code>userId</code> as a plain string - <strong>no foreign key</strong> to the <code>auth</code> schema. Auth-service is the single source of truth for user identity.
           </div>
         </div>
       </section>
@@ -534,7 +534,7 @@
             </div>
             <div class="tr-infra-connector">│</div>
             <div class="tr-infra-tier">
-              <div class="tr-infra-tier-label">Compute — Cloud Run (me-west1)</div>
+              <div class="tr-infra-tier-label">Compute - Cloud Run (me-west1)</div>
               <div class="tr-infra-nodes tr-infra-nodes--wrap">
                 <div class="tr-infra-node tr-infra-node--compute">auth-service</div>
                 <div class="tr-infra-node tr-infra-node--compute">items-service</div>
@@ -575,7 +575,7 @@
                 </tr>
                 <tr>
                   <td><code>buyb4ugo.com</code></td>
-                  <td>—</td>
+                  <td>-</td>
                   <td><code>**</code> → website</td>
                 </tr>
               </tbody>
@@ -653,7 +653,7 @@
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Firebase Hosting as Ingress</h4>
-              <p>Global CDN + SSL + path routing — needed because <code>me-west1</code> doesn't support direct Cloud Run domain mappings.</p>
+              <p>Global CDN + SSL + path routing - needed because <code>me-west1</code> doesn't support direct Cloud Run domain mappings.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Shared JWT Secret</h4>
@@ -661,7 +661,7 @@
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">userId as Plain String</h4>
-              <p>Items/scan services reference users by ID string (no FK) — intentional decoupling from auth schema.</p>
+              <p>Items/scan services reference users by ID string (no FK) - intentional decoupling from auth schema.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">PostGIS in items Schema</h4>

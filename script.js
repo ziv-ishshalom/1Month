@@ -1,5 +1,5 @@
 /**
- * 1Month Portfolio — Interactions & Animations
+ * 1Month Portfolio - Interactions & Animations
  */
 (function () {
   'use strict';

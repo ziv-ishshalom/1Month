@@ -1,5 +1,5 @@
 /**
- * Tech Review Pages — Sidebar TOC scroll-spy & interactions
+ * Tech Review Pages - Sidebar TOC scroll-spy & interactions
  */
 (function () {
   'use strict';

@@ -1,5 +1,5 @@
 /* ============================================================
-   1Month Portfolio — Design System: "Momentum"
+   1Month Portfolio - Design System: "Momentum"
    Dark-mode-first · Electric Violet + Warm Gold
    ============================================================ */
 
@@ -19,13 +19,13 @@
   --bg-card: #14141E;
   --bg-glass: rgba(18, 18, 30, 0.75);
 
-  /* Primary — Electric Violet */
+  /* Primary - Electric Violet */
   --primary: #7C3AED;
   --primary-glow: rgba(124, 58, 237, 0.25);
   --primary-light: #A78BFA;
   --primary-surface: rgba(124, 58, 237, 0.08);
 
-  /* Secondary — Warm Gold */
+  /* Secondary - Warm Gold */
   --secondary: #F59E0B;
   --secondary-glow: rgba(245, 158, 11, 0.2);
 
