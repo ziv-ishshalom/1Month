@@ -138,12 +138,10 @@ img {
 .nav-logo-img {
   height: 54px;
   object-fit: contain;
-  filter: invert(0.8) hue-rotate(180deg);
 }
 
 .footer-logo-img {
   height: 64px;
-  filter: invert(0.8) hue-rotate(180deg);
 }
 
 .nav-logo {
@@ -176,6 +174,7 @@ img {
   color: var(--text-secondary);
   transition: color var(--transition);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
