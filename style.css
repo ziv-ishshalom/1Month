@@ -14,33 +14,33 @@
 
 :root {
   /* Background */
-  --bg: #F5F5F7;
-  --bg-elevated: #EAEAEE;
-  --bg-card: #FFFFFF;
-  --bg-glass: rgba(255, 255, 255, 0.6);
+  --bg: #0A0A0F;
+  --bg-elevated: #111118;
+  --bg-card: #14141E;
+  --bg-glass: rgba(18, 18, 30, 0.75);
 
-  /* Primary - Slate Gray */
-  --primary: #2D3436;
-  --primary-glow: transparent;
-  --primary-light: #636E72;
-  --primary-surface: rgba(45, 52, 54, 0.05);
+  /* Primary - Electric Violet */
+  --primary: #7C3AED;
+  --primary-glow: rgba(124, 58, 237, 0.25);
+  --primary-light: #A78BFA;
+  --primary-surface: rgba(124, 58, 237, 0.08);
 
-  /* Secondary - Accent Orange */
-  --secondary: #FF4500;
-  --secondary-glow: transparent;
+  /* Secondary - Warm Gold */
+  --secondary: #F59E0B;
+  --secondary-glow: rgba(245, 158, 11, 0.2);
 
   /* Status */
   --success: #10B981;
   --info: #3B82F6;
 
   /* Text */
-  --text-primary: #2D3436;
-  --text-secondary: #636E72;
-  --text-accent: #FF4500;
+  --text-primary: #F1F0F5;
+  --text-secondary: #8B8AA0;
+  --text-accent: #C4B5FD;
 
   /* Borders */
-  --border: rgba(0, 0, 0, 0.1);
-  --border-glow: rgba(0, 0, 0, 0.1);
+  --border: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(124, 58, 237, 0.12);
 
   /* Spacing */
   --space-xs: 4px;
@@ -627,33 +627,27 @@ img {
 }
 
 .app-icon--b4ugo {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
 }
 
 .app-icon--cityfix {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #E07A5F, #F4A261);
 }
 
 .app-icon--tapching {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
 }
 
 .app-icon--stashcache {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #FF8C00, #FF9500);
 }
 
 .app-icon--socialhelper {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
 }
 
 .app-icon--doppel {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #8B5CF6, #A78BFA);
 }
 
 .app-meta {
