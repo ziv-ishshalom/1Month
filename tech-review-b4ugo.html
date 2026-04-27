@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="tech-review.css" />
@@ -21,10 +21,7 @@
 
 <body>
 
-  <!-- ============================== AMBIENT BG ============================== -->
-  <div class="ambient-orb ambient-orb--1"></div>
-  <div class="ambient-orb ambient-orb--2"></div>
-  <div class="ambient-orb ambient-orb--3"></div>
+  <!-- ============================== AMBIENT BG (Removed) ============================== -->
 
   <!-- ============================== NAVIGATION ============================== -->
   <nav class="nav scrolled" id="nav">
@@ -100,6 +97,7 @@
           <li><a href="#database" class="tr-toc-link">Database Design</a></li>
           <li><a href="#infrastructure" class="tr-toc-link">Infrastructure</a></li>
           <li><a href="#devops" class="tr-toc-link">DevOps & CI/CD</a></li>
+          <li><a href="#observability" class="tr-toc-link">Observability</a></li>
           <li><a href="#decisions" class="tr-toc-link">Key Decisions</a></li>
         </ul>
       </div>
@@ -634,6 +632,109 @@
               </ul>
               <div class="tr-pipeline-trigger">Trigger: Tag mobile-v*, Manual dispatch</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Observability & Quality ── -->
+      <section class="tr-section" id="observability">
+        <div class="tr-section-header">
+          <span class="tr-section-icon">📡</span>
+          <h2 class="tr-section-title">Observability & Quality</h2>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Admin Dashboard — System Health</h3>
+          <p class="tr-text">A custom-built <strong>Next.js admin portal</strong> (<code>admin.buyb4ugo.com</code>) provides comprehensive real-time observability across the entire platform. Key dashboards:</p>
+
+          <div class="tr-feature-grid">
+            <div class="tr-feature">
+              <span class="tr-feature-icon">💓</span>
+              <div>
+                <strong>API Health Monitor</strong>
+                <p>Real-time liveness checks across 8 endpoints (Auth, Items, Scan, Admin, Website, Redis Cache, PostGIS, Firebase) with 30-second auto-refresh. Tracks per-service response time, status, aggregate uptime %, and average response.</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">📊</span>
+              <div>
+                <strong>Analytics Dashboard</strong>
+                <p>User engagement metrics — DAU, WAU, MAU, and stickiness ratios. Event analytics with daily trends (7d/30d/90d) tracking <code>scan_triggered</code>, <code>app_open</code>, <code>item_added</code>, <code>item_completed</code>, <code>settings_changed</code>, and <code>screen_view</code>. Growth & activity panels showing scan volume, items created, completion rate, and Redis cache efficiency.</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🔍</span>
+              <div>
+                <strong>Scan Debug Logs</strong>
+                <p>Per-user trace-level scan execution logging. Each log entry records scan type (Auto / Background), outcome (No Stores / Found / Notified), speed, driving tier, and GPS mode. Filterable by type and outcome with pagination and CSV export for offline analysis.</p>
+              </div>
+            </div>
+            <div class="tr-feature">
+              <span class="tr-feature-icon">🚀</span>
+              <div>
+                <strong>DevOps Dashboard</strong>
+                <p>GitHub Actions pipeline status (CI + Deploy), EAS mobile build history, test count tracking (419 tests / 32 suites), Sentry bug integrations, and database backup management to GCS. All surfaced in-app — no need to leave the admin portal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Error Tracking & Monitoring</h3>
+          <div class="tr-table-wrap">
+            <table class="tr-table">
+              <thead>
+                <tr><th>Tool</th><th>Scope</th><th>Details</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Sentry</strong></td>
+                  <td>Backend (×3) + Mobile</td>
+                  <td><code>@sentry/nestjs</code> on auth, items, scan services. <code>@sentry/react-native</code> on mobile app. Source maps uploaded via CI. Error counts surfaced in DevOps dashboard.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cloud Run Health Probes</strong></td>
+                  <td>All 5 Cloud Run services</td>
+                  <td>Liveness probes on <code>/health</code> endpoints. Auto-restart on failure. Post-deploy validation in CI pipeline via <code>curl</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Admin API Health Monitor</strong></td>
+                  <td>8 service endpoints</td>
+                  <td>Custom dashboard with 30s polling, response time tracking, aggregate session uptime %, and Fast/Moderate/Slow latency classification.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Testing Strategy</h3>
+          <p class="tr-text">Every push to <code>main</code> triggers a full CI matrix. Tests gate all merges and deployments.</p>
+          <div class="tr-table-wrap">
+            <table class="tr-table">
+              <thead>
+                <tr><th>App</th><th>Framework</th><th>Suites</th><th>Tests</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Mobile</td><td>Jest</td><td>5</td><td>126</td></tr>
+                <tr><td>Admin Web</td><td>Jest</td><td>16</td><td>118</td></tr>
+                <tr><td>scan-service</td><td>Jest</td><td>6</td><td>79</td></tr>
+                <tr><td>items-service</td><td>Jest</td><td>3</td><td>63</td></tr>
+                <tr><td>auth-service</td><td>Jest</td><td>2</td><td>33</td></tr>
+                <tr><td><strong>Total</strong></td><td></td><td><strong>32</strong></td><td><strong>419</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tr-callout">
+            <strong>Key Pattern:</strong> The 572-line <code>backgroundTask.ts</code> state machine was refactored to delegate all decision logic to <strong>pure functions</strong> in <code>backgroundTaskLogic.ts</code>, enabling 47 deterministic unit tests covering Smart Driving tier transitions, hysteresis reverts, notification gate evaluation, and GPS profile management — all without requiring Expo runtime APIs.
+          </div>
+        </div>
+
+        <div class="tr-card">
+          <h3 class="tr-card-title">Load Testing</h3>
+          <p class="tr-text"><strong>k6</strong> load testing scripts live in <code>tests/load/</code> alongside the monorepo. Ramp-up scenarios exercise health, auth, items, stores, and scan endpoints concurrently against the production Cloud Run cluster.</p>
+          <div class="tr-callout tr-callout--info">
+            <strong>Validated:</strong> Rate limiting (429 throttling) confirmed under burst traffic. Redis cache efficiency tracked at ~48% hit rate. Average cached scan latency maintained under 1 second.
           </div>
         </div>
       </section>

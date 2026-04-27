@@ -140,5 +140,83 @@
       card.style.transform = '';
     });
   });
+  // ── Code Showcase — PIN lock + auto-close ─────────────────
+  var codeLock = document.getElementById('code-lock');
+  var codeContent = document.getElementById('code-content');
+  var codePin = document.getElementById('code-pin');
+  var codePinBtn = document.getElementById('code-pin-btn');
+  var codePinError = document.getElementById('code-pin-error');
+  var codeCountdown = document.getElementById('code-countdown');
+  var codeTimerFill = document.getElementById('code-timer-fill');
+  var codeTimer = null;
+  var CODE_HASH = '2b20a53b75b0eb73f4e9fb9ec020e740e61c4e607b4aa6c1ea3eb233a5f74a82';
+  var CODE_TIMEOUT = 60;
+
+  function hashPin(pin) {
+    var encoder = new TextEncoder();
+    return crypto.subtle.digest('SHA-256', encoder.encode(pin)).then(function (buf) {
+      return Array.from(new Uint8Array(buf)).map(function (b) {
+        return b.toString(16).padStart(2, '0');
+      }).join('');
+    });
+  }
+
+  function lockCode() {
+    if (codeTimer) clearInterval(codeTimer);
+    codeContent.style.display = 'none';
+    codeLock.style.display = 'flex';
+    codePin.value = '';
+    codePinError.textContent = '';
+    if (codeTimerFill) codeTimerFill.style.width = '100%';
+    if (codeCountdown) codeCountdown.textContent = CODE_TIMEOUT;
+  }
+
+  function unlockCode() {
+    codeLock.style.display = 'none';
+    codeContent.style.display = 'block';
+
+    var remaining = CODE_TIMEOUT;
+    codeCountdown.textContent = remaining;
+    codeTimerFill.style.transition = 'none';
+    codeTimerFill.style.width = '100%';
+
+    // Force reflow then start animation
+    void codeTimerFill.offsetWidth;
+    codeTimerFill.style.transition = 'width 1s linear';
+
+    codeTimer = setInterval(function () {
+      remaining--;
+      codeCountdown.textContent = remaining;
+      codeTimerFill.style.width = ((remaining / CODE_TIMEOUT) * 100) + '%';
+
+      if (remaining <= 0) {
+        lockCode();
+      }
+    }, 1000);
+  }
+
+  function attemptUnlock() {
+    hashPin(codePin.value).then(function (hash) {
+      if (hash === CODE_HASH) {
+        unlockCode();
+      } else {
+        codePinError.textContent = 'Incorrect code. Try again.';
+        codePin.value = '';
+        codePin.style.borderColor = '#ef4444';
+        setTimeout(function () {
+          codePin.style.borderColor = '';
+        }, 1500);
+      }
+    });
+  }
+
+  if (codePinBtn) {
+    codePinBtn.addEventListener('click', attemptUnlock);
+  }
+  if (codePin) {
+    codePin.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') attemptUnlock();
+    });
+  }
 
 })();
