@@ -164,7 +164,7 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xl);
   list-style: none;
 }
 
