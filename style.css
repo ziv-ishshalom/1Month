@@ -136,12 +136,8 @@ img {
 }
 
 .nav-logo-img {
-  height: 48px;
+  height: 64px;
   object-fit: contain;
-  background: #0A0A0F;
-  border-radius: var(--radius-md);
-  padding: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .footer-logo-img {
