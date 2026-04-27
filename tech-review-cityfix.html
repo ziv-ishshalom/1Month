@@ -27,8 +27,7 @@
   <nav class="nav scrolled" id="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand">
-        <span class="nav-logo">1</span>
-        <span class="nav-name">Month</span>
+        <img src="logo-composite.png" alt="1Month" class="nav-logo-img" />
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html#apps" class="nav-link">Portfolio</a></li>
@@ -292,8 +291,10 @@
                 <div class="tr-arch-group-label">Clients</div>
                 <div class="tr-arch-nodes">
                   <div class="tr-arch-node tr-arch-node--client">📱 Mobile App<br><small>Expo React Native</small></div>
-                  <div class="tr-arch-node tr-arch-node--client">🏛️ Municipality Admin<br><small>admin.cityfix.co.il</small></div>
-                  <div class="tr-arch-node tr-arch-node--client">⚙️ System Admin<br><small>app.cityfix.co.il</small></div>
+                  <div class="tr-arch-node tr-arch-node--client">🏛️ Municipality
+                    Admin<br><small>admin.cityfix.co.il</small></div>
+                  <div class="tr-arch-node tr-arch-node--client">⚙️ System Admin<br><small>app.cityfix.co.il</small>
+                  </div>
                   <div class="tr-arch-node tr-arch-node--client">🌐 Website<br><small>cityfix.co.il</small></div>
                 </div>
               </div>
@@ -325,8 +326,10 @@
               <div class="tr-arch-group">
                 <div class="tr-arch-group-label">Data Layer</div>
                 <div class="tr-arch-nodes">
-                  <div class="tr-arch-node tr-arch-node--data">🐘 PostgreSQL 16<br><small>PostGIS 3.4 (containerized)</small></div>
-                  <div class="tr-arch-node tr-arch-node--data">📁 Docker Volumes<br><small>uploads, certs, db</small></div>
+                  <div class="tr-arch-node tr-arch-node--data">🐘 PostgreSQL 16<br><small>PostGIS 3.4
+                      (containerized)</small></div>
+                  <div class="tr-arch-node tr-arch-node--data">📁 Docker Volumes<br><small>uploads, certs, db</small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -346,8 +349,8 @@
           <div class="arch-panel">
             <div class="arch-label">Software Architecture</div>
             <img src="assets/diagrams/cityfix-software-architecture.png"
-                 alt="CityFix Software Architecture - 2 NestJS microservices behind Nginx reverse proxy, with PostgreSQL, Docker Volumes, NSFWJS, and Tesseract.js"
-                 class="arch-img" loading="lazy">
+              alt="CityFix Software Architecture - 2 NestJS microservices behind Nginx reverse proxy, with PostgreSQL, Docker Volumes, NSFWJS, and Tesseract.js"
+              class="arch-img" loading="lazy">
             <div class="arch-caption">Clients → Nginx Proxy → NestJS Services → Data Layer + AI Pipeline</div>
           </div>
 
@@ -355,8 +358,8 @@
           <div class="arch-panel">
             <div class="arch-label">Deployment Architecture</div>
             <img src="assets/diagrams/cityfix-deployment-architecture.png"
-                 alt="CityFix Deployment Architecture - Users to Nginx SSL to Docker Compose containers, with persistent volumes and CI/CD pipeline"
-                 class="arch-img" loading="lazy">
+              alt="CityFix Deployment Architecture - Users to Nginx SSL to Docker Compose containers, with persistent volumes and CI/CD pipeline"
+              class="arch-img" loading="lazy">
             <div class="arch-caption">Users → Nginx (4 domains) → Docker Compose → PostgreSQL / Volumes</div>
           </div>
         </div>
@@ -370,16 +373,29 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">🔐 auth-service</h3>
-          <p class="tr-text tr-text--muted">User identity, JWT authentication, email-based auth (Nodemailer), user accounts and profile management.</p>
+          <p class="tr-text tr-text--muted">User identity, JWT authentication, email-based auth (Nodemailer), user
+            accounts and profile management.</p>
           <div class="tr-table-wrap">
             <table class="tr-table tr-table--compact">
               <thead>
-                <tr><th>Module</th><th>Purpose</th></tr>
+                <tr>
+                  <th>Module</th>
+                  <th>Purpose</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td><code>AuthModule</code></td><td>JWT issuing, email/password auth, token refresh & blacklisting</td></tr>
-                <tr><td><code>UsersModule</code></td><td>User CRUD, role management (citizen, employee, admin)</td></tr>
-                <tr><td><code>PushModule</code></td><td>Expo Push Token registration & notification dispatch</td></tr>
+                <tr>
+                  <td><code>AuthModule</code></td>
+                  <td>JWT issuing, email/password auth, token refresh & blacklisting</td>
+                </tr>
+                <tr>
+                  <td><code>UsersModule</code></td>
+                  <td>User CRUD, role management (citizen, employee, admin)</td>
+                </tr>
+                <tr>
+                  <td><code>PushModule</code></td>
+                  <td>Expo Push Token registration & notification dispatch</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -387,18 +403,37 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">📋 reports-service</h3>
-          <p class="tr-text tr-text--muted">Core business logic - civic issue reports CRUD, AI moderation pipeline, image processing, upvoting, and status management.</p>
+          <p class="tr-text tr-text--muted">Core business logic - civic issue reports CRUD, AI moderation pipeline,
+            image processing, upvoting, and status management.</p>
           <div class="tr-table-wrap">
             <table class="tr-table tr-table--compact">
               <thead>
-                <tr><th>Module</th><th>Purpose</th></tr>
+                <tr>
+                  <th>Module</th>
+                  <th>Purpose</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td><code>ReportsModule</code></td><td>Report CRUD, status transitions (OPEN → IN_PROGRESS → RESOLVED/REJECTED), upvoting</td></tr>
-                <tr><td><code>ModerationModule</code></td><td>NSFWJS + TensorFlow image scanning, leo-profanity text filtering</td></tr>
-                <tr><td><code>PiiBlurModule</code></td><td>Tesseract.js OCR → Sharp bounding-box blur on detected PII text</td></tr>
-                <tr><td><code>UploadModule</code></td><td>Image optimization (Sharp resize + WebP conversion), local volume storage</td></tr>
-                <tr><td><code>LeaderboardModule</code></td><td>Gamification queries - top reporters, milestone tracking</td></tr>
+                <tr>
+                  <td><code>ReportsModule</code></td>
+                  <td>Report CRUD, status transitions (OPEN → IN_PROGRESS → RESOLVED/REJECTED), upvoting</td>
+                </tr>
+                <tr>
+                  <td><code>ModerationModule</code></td>
+                  <td>NSFWJS + TensorFlow image scanning, leo-profanity text filtering</td>
+                </tr>
+                <tr>
+                  <td><code>PiiBlurModule</code></td>
+                  <td>Tesseract.js OCR → Sharp bounding-box blur on detected PII text</td>
+                </tr>
+                <tr>
+                  <td><code>UploadModule</code></td>
+                  <td>Image optimization (Sharp resize + WebP conversion), local volume storage</td>
+                </tr>
+                <tr>
+                  <td><code>LeaderboardModule</code></td>
+                  <td>Gamification queries - top reporters, milestone tracking</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -414,14 +449,16 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">5-Stage Report Processing</h3>
-          <p class="tr-text tr-text--muted">Every incoming civic report passes through a multi-stage AI pipeline before being committed to the database.</p>
+          <p class="tr-text tr-text--muted">Every incoming civic report passes through a multi-stage AI pipeline before
+            being committed to the database.</p>
           <div class="tr-pipeline tr-pipeline--vertical">
             <div class="tr-pipeline-stage tr-pipeline-stage--v">
               <div class="tr-pipeline-stage-header">
                 <span class="tr-pipeline-number tr-pipeline-number--danger">①</span>
                 <strong>Text Moderation</strong>
               </div>
-              <p class="tr-pipeline-desc"><code>leo-profanity</code> scans title and description for abusive language. Rejects immediately if detected.</p>
+              <p class="tr-pipeline-desc"><code>leo-profanity</code> scans title and description for abusive language.
+                Rejects immediately if detected.</p>
             </div>
             <div class="tr-pipeline-arrow-v">↓</div>
             <div class="tr-pipeline-stage tr-pipeline-stage--v">
@@ -429,7 +466,8 @@
                 <span class="tr-pipeline-number tr-pipeline-number--info">②</span>
                 <strong>Image Optimization</strong>
               </div>
-              <p class="tr-pipeline-desc"><code>Sharp</code> resizes to 1200px max width and converts to WebP. Original file is unlinked.</p>
+              <p class="tr-pipeline-desc"><code>Sharp</code> resizes to 1200px max width and converts to WebP. Original
+                file is unlinked.</p>
             </div>
             <div class="tr-pipeline-arrow-v">↓</div>
             <div class="tr-pipeline-stage tr-pipeline-stage--v">
@@ -437,7 +475,8 @@
                 <span class="tr-pipeline-number tr-pipeline-number--warning">③</span>
                 <strong>PII Text Detection & Blurring</strong>
               </div>
-              <p class="tr-pipeline-desc"><code>Tesseract.js</code> OCR scans the image for text (license plates, ID cards). Detected regions are blurred via Sharp.</p>
+              <p class="tr-pipeline-desc"><code>Tesseract.js</code> OCR scans the image for text (license plates, ID
+                cards). Detected regions are blurred via Sharp.</p>
             </div>
             <div class="tr-pipeline-arrow-v">↓</div>
             <div class="tr-pipeline-stage tr-pipeline-stage--v">
@@ -445,7 +484,8 @@
                 <span class="tr-pipeline-number tr-pipeline-number--danger">④</span>
                 <strong>NSFW Content Detection</strong>
               </div>
-              <p class="tr-pipeline-desc"><code>NSFWJS</code> + TensorFlow scans the blurred image. Rejects and deletes if pornographic or graphic content detected.</p>
+              <p class="tr-pipeline-desc"><code>NSFWJS</code> + TensorFlow scans the blurred image. Rejects and deletes
+                if pornographic or graphic content detected.</p>
             </div>
             <div class="tr-pipeline-arrow-v">↓</div>
             <div class="tr-pipeline-stage tr-pipeline-stage--v">
@@ -453,11 +493,13 @@
                 <span class="tr-pipeline-number tr-pipeline-number--success">⑤</span>
                 <strong>Database Commit</strong>
               </div>
-              <p class="tr-pipeline-desc">Verified, blurred, optimized WebP is saved to <code>/uploads</code> volume and the DB entry is created.</p>
+              <p class="tr-pipeline-desc">Verified, blurred, optimized WebP is saved to <code>/uploads</code> volume and
+                the DB entry is created.</p>
             </div>
           </div>
           <div class="tr-callout tr-callout--warning">
-            <strong>Memory Note:</strong> NSFWJS pulls heavy TensorFlow node-bindings. Container memory allocation must be at least 1–2 GB to prevent OOM during heavy report loads.
+            <strong>Memory Note:</strong> NSFWJS pulls heavy TensorFlow node-bindings. Container memory allocation must
+            be at least 1–2 GB to prevent OOM during heavy report loads.
           </div>
         </div>
       </section>
@@ -471,15 +513,28 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">Schema Architecture</h3>
-          <p class="tr-text">Both services share a single PostgreSQL 16 + PostGIS 3.4 containerized instance, separated by schemas managed via Prisma:</p>
+          <p class="tr-text">Both services share a single PostgreSQL 16 + PostGIS 3.4 containerized instance, separated
+            by schemas managed via Prisma:</p>
           <div class="tr-table-wrap">
             <table class="tr-table">
               <thead>
-                <tr><th>Prisma Config</th><th>DB Schema</th><th>Service</th></tr>
+                <tr>
+                  <th>Prisma Config</th>
+                  <th>DB Schema</th>
+                  <th>Service</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td><code>auth-service/prisma/schema.prisma</code></td><td><code>auth</code></td><td>auth-service</td></tr>
-                <tr><td><code>reports-service/prisma/schema.prisma</code></td><td><code>reports</code></td><td>reports-service</td></tr>
+                <tr>
+                  <td><code>auth-service/prisma/schema.prisma</code></td>
+                  <td><code>auth</code></td>
+                  <td>auth-service</td>
+                </tr>
+                <tr>
+                  <td><code>reports-service/prisma/schema.prisma</code></td>
+                  <td><code>reports</code></td>
+                  <td>reports-service</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -587,7 +642,8 @@
               <div class="tr-infra-tier-label">Persistent Volumes</div>
               <div class="tr-infra-nodes">
                 <div class="tr-infra-node tr-infra-node--data">🐘 postgres_data</div>
-                <div class="tr-infra-node tr-infra-node--data">📁 uploads_data<br><small>Shared: Nginx + reports-service</small></div>
+                <div class="tr-infra-node tr-infra-node--data">📁 uploads_data<br><small>Shared: Nginx +
+                    reports-service</small></div>
                 <div class="tr-infra-node tr-infra-node--data">🔑 certbot_data</div>
               </div>
             </div>
@@ -599,7 +655,11 @@
           <div class="tr-table-wrap">
             <table class="tr-table">
               <thead>
-                <tr><th>Domain</th><th>Route</th><th>Backend Target</th></tr>
+                <tr>
+                  <th>Domain</th>
+                  <th>Route</th>
+                  <th>Backend Target</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>
@@ -636,7 +696,8 @@
             </table>
           </div>
           <div class="tr-callout tr-callout--info">
-            <strong>Image Serving:</strong> Nginx serves optimized WebP images natively from the shared <code>uploads_data</code> volume - never routed through Node.js for performance.
+            <strong>Image Serving:</strong> Nginx serves optimized WebP images natively from the shared
+            <code>uploads_data</code> volume - never routed through Node.js for performance.
           </div>
         </div>
       </section>
@@ -697,7 +758,8 @@
         <div class="tr-card">
           <h3 class="tr-card-title">Database Backups</h3>
           <div class="tr-callout">
-            <strong>Nightly cron job</strong> runs <code>backup-db.sh</code> - PostGIS dump with timestamped filenames, stored on the VM's persistent disk.
+            <strong>Nightly cron job</strong> runs <code>backup-db.sh</code> - PostGIS dump with timestamped filenames,
+            stored on the VM's persistent disk.
           </div>
         </div>
       </section>
@@ -711,35 +773,46 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">System Admin Portal — Platform Observability</h3>
-          <p class="tr-text">A dedicated <strong>Next.js System Admin portal</strong> (<code>app.cityfix.co.il</code>) provides platform-wide visibility. Separate from the municipality admin, this portal focuses on engineering operations:</p>
+          <p class="tr-text">A dedicated <strong>Next.js System Admin portal</strong> (<code>app.cityfix.co.il</code>)
+            provides platform-wide visibility. Separate from the municipality admin, this portal focuses on engineering
+            operations:</p>
 
           <div class="tr-feature-grid">
             <div class="tr-feature">
               <span class="tr-feature-icon">💓</span>
               <div>
                 <strong>Health Dashboard</strong>
-                <p>Auto-refreshing (30s) liveness checks across <strong>5 Docker services</strong> (Admin Sys, Auth Service, Reports Service, Admin Web, Website). Per-service response time with color-coded latency bands: green (&lt;200ms), orange (200ms–1s), red (&gt;1s). Aggregate operational status banner.</p>
+                <p>Auto-refreshing (30s) liveness checks across <strong>5 Docker services</strong> (Admin Sys, Auth
+                  Service, Reports Service, Admin Web, Website). Per-service response time with color-coded latency
+                  bands: green (&lt;200ms), orange (200ms–1s), red (&gt;1s). Aggregate operational status banner.</p>
               </div>
             </div>
             <div class="tr-feature">
               <span class="tr-feature-icon">🚀</span>
               <div>
                 <strong>CI/CD Dashboard</strong>
-                <p>GitHub Actions integration showing CI success rate, deploys this week, latest CI and deploy run numbers. Two pipeline views: <strong>CI Pipeline</strong> (lint, test, build) and <strong>Production Deploy</strong> (SSH → Docker Compose). Each run shows pass/fail status, commit hash, author, and age. Direct link to GitHub Actions.</p>
+                <p>GitHub Actions integration showing CI success rate, deploys this week, latest CI and deploy run
+                  numbers. Two pipeline views: <strong>CI Pipeline</strong> (lint, test, build) and <strong>Production
+                    Deploy</strong> (SSH → Docker Compose). Each run shows pass/fail status, commit hash, author, and
+                  age. Direct link to GitHub Actions.</p>
               </div>
             </div>
             <div class="tr-feature">
               <span class="tr-feature-icon">🔴</span>
               <div>
                 <strong>Sentry Dashboard</strong>
-                <p>Integrated Sentry view tracking 4 projects: <code>cityfix-auth-service</code>, <code>cityfix-reports-service</code>, <code>cityfix-admin</code>, and <code>cityfix-mobile</code>. Shows unresolved and new error counts per project. Overview widget displays total Sentry errors (24h) alongside CI status and report counts.</p>
+                <p>Integrated Sentry view tracking 4 projects: <code>cityfix-auth-service</code>,
+                  <code>cityfix-reports-service</code>, <code>cityfix-admin</code>, and <code>cityfix-mobile</code>.
+                  Shows unresolved and new error counts per project. Overview widget displays total Sentry errors (24h)
+                  alongside CI status and report counts.</p>
               </div>
             </div>
             <div class="tr-feature">
               <span class="tr-feature-icon">📚</span>
               <div>
                 <strong>Taxonomy & Moderation</strong>
-                <p>Taxonomy management for report categories across all municipalities. Moderation pipeline configuration and monitoring for the AI content filtering stages (profanity, NSFW, PII).</p>
+                <p>Taxonomy management for report categories across all municipalities. Moderation pipeline
+                  configuration and monitoring for the AI content filtering stages (profanity, NSFW, PII).</p>
               </div>
             </div>
           </div>
@@ -750,23 +823,33 @@
           <div class="tr-table-wrap">
             <table class="tr-table">
               <thead>
-                <tr><th>Tool</th><th>Scope</th><th>Details</th></tr>
+                <tr>
+                  <th>Tool</th>
+                  <th>Scope</th>
+                  <th>Details</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Sentry</strong></td>
                   <td>Backend (×2) + Admin + Mobile</td>
-                  <td><code>@sentry/nestjs</code> on auth-service and reports-service. <code>@sentry/react-native</code> on mobile. Admin dashboard Sentry tracking. Source maps uploaded in CI. Error counts surfaced in System Admin overview.</td>
+                  <td><code>@sentry/nestjs</code> on auth-service and reports-service. <code>@sentry/react-native</code>
+                    on mobile. Admin dashboard Sentry tracking. Source maps uploaded in CI. Error counts surfaced in
+                    System Admin overview.</td>
                 </tr>
                 <tr>
                   <td><strong>UptimeRobot</strong></td>
                   <td>All 4 public domains</td>
-                  <td>60-second interval HTTP health checks on <code>cityfix.co.il</code>, <code>admin.cityfix.co.il</code>, <code>app.cityfix.co.il</code>, and <code>api.cityfix.co.il</code>. Instant Slack/email notifications on downtime. Public status page.</td>
+                  <td>60-second interval HTTP health checks on <code>cityfix.co.il</code>,
+                    <code>admin.cityfix.co.il</code>, <code>app.cityfix.co.il</code>, and
+                    <code>api.cityfix.co.il</code>. Instant Slack/email notifications on downtime. Public status page.
+                  </td>
                 </tr>
                 <tr>
                   <td><strong>Docker Health Checks</strong></td>
                   <td>6 containers</td>
-                  <td>Docker Compose <code>healthcheck</code> directives on all service containers. Post-deploy CI validation via SSH health check commands.</td>
+                  <td>Docker Compose <code>healthcheck</code> directives on all service containers. Post-deploy CI
+                    validation via SSH health check commands.</td>
                 </tr>
               </tbody>
             </table>
@@ -775,21 +858,58 @@
 
         <div class="tr-card">
           <h3 class="tr-card-title">System Admin Overview</h3>
-          <p class="tr-text">The System Overview dashboard aggregates key platform signals into a single pane of glass:</p>
+          <p class="tr-text">The System Overview dashboard aggregates key platform signals into a single pane of glass:
+          </p>
           <div class="tr-table-wrap">
             <table class="tr-table">
               <thead>
-                <tr><th>Signal</th><th>Source</th><th>Description</th></tr>
+                <tr>
+                  <th>Signal</th>
+                  <th>Source</th>
+                  <th>Description</th>
+                </tr>
               </thead>
               <tbody>
-                <tr><td>Active Cities</td><td>Database</td><td>Number of municipalities onboarded</td></tr>
-                <tr><td>Total Reports</td><td>Database</td><td>Aggregate civic reports across all cities</td></tr>
-                <tr><td>Reports Today</td><td>Database</td><td>24h report volume</td></tr>
-                <tr><td>CI Status</td><td>GitHub Actions API</td><td>Latest CI run pass/fail status</td></tr>
-                <tr><td>Sentry Errors</td><td>Sentry API</td><td>New unresolved errors in the last 24h</td></tr>
-                <tr><td>Pipeline Summary</td><td>GitHub Actions API</td><td>Last 3 CI runs with commit messages and status</td></tr>
-                <tr><td>Error Monitoring</td><td>Sentry API</td><td>Per-project (auth, reports, admin, mobile) error counts</td></tr>
-                <tr><td>Service Health</td><td>Health endpoints</td><td>5/5 services operational status with response times</td></tr>
+                <tr>
+                  <td>Active Cities</td>
+                  <td>Database</td>
+                  <td>Number of municipalities onboarded</td>
+                </tr>
+                <tr>
+                  <td>Total Reports</td>
+                  <td>Database</td>
+                  <td>Aggregate civic reports across all cities</td>
+                </tr>
+                <tr>
+                  <td>Reports Today</td>
+                  <td>Database</td>
+                  <td>24h report volume</td>
+                </tr>
+                <tr>
+                  <td>CI Status</td>
+                  <td>GitHub Actions API</td>
+                  <td>Latest CI run pass/fail status</td>
+                </tr>
+                <tr>
+                  <td>Sentry Errors</td>
+                  <td>Sentry API</td>
+                  <td>New unresolved errors in the last 24h</td>
+                </tr>
+                <tr>
+                  <td>Pipeline Summary</td>
+                  <td>GitHub Actions API</td>
+                  <td>Last 3 CI runs with commit messages and status</td>
+                </tr>
+                <tr>
+                  <td>Error Monitoring</td>
+                  <td>Sentry API</td>
+                  <td>Per-project (auth, reports, admin, mobile) error counts</td>
+                </tr>
+                <tr>
+                  <td>Service Health</td>
+                  <td>Health endpoints</td>
+                  <td>5/5 services operational status with response times</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -807,35 +927,43 @@
           <div class="tr-decisions-grid">
             <div class="tr-decision">
               <h4 class="tr-decision-title">VM over Serverless</h4>
-              <p>Docker Compose on a single GCP VM keeps costs fixed and simplifies inter-container networking (bridge network with internal hostnames).</p>
+              <p>Docker Compose on a single GCP VM keeps costs fixed and simplifies inter-container networking (bridge
+                network with internal hostnames).</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Nginx as Reverse Proxy</h4>
-              <p>Handles SSL termination (Certbot), domain routing (4 domains), and static file serving from shared volumes - keeping Node.js focused on business logic.</p>
+              <p>Handles SSL termination (Certbot), domain routing (4 domains), and static file serving from shared
+                volumes - keeping Node.js focused on business logic.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">AI Pipeline in Upload Flow</h4>
-              <p>Moderation happens <strong>synchronously at upload time</strong> - no deferred queue. Bad content never reaches the database.</p>
+              <p>Moderation happens <strong>synchronously at upload time</strong> - no deferred queue. Bad content never
+                reaches the database.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Shared Upload Volume</h4>
-              <p><code>uploads_data</code> is mounted to both Nginx and reports-service. Nginx serves images natively; Node.js never handles image streaming.</p>
+              <p><code>uploads_data</code> is mounted to both Nginx and reports-service. Nginx serves images natively;
+                Node.js never handles image streaming.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Offline-First Mobile</h4>
-              <p>Reports are queued locally and auto-drained on reconnect - critical for field workers in poor-connectivity areas.</p>
+              <p>Reports are queued locally and auto-drained on reconnect - critical for field workers in
+                poor-connectivity areas.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">Dual Admin Portals</h4>
-              <p>Municipality admin (<code>admin.cityfix.co.il</code>) for per-city management; System admin (<code>app.cityfix.co.il</code>) for platform-wide operations.</p>
+              <p>Municipality admin (<code>admin.cityfix.co.il</code>) for per-city management; System admin
+                (<code>app.cityfix.co.il</code>) for platform-wide operations.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">PostGIS Containerized</h4>
-              <p>Database runs as a Docker container (<code>postgis/postgis:16-3.4-alpine</code>) with persistent volume - easy backup and migration.</p>
+              <p>Database runs as a Docker container (<code>postgis/postgis:16-3.4-alpine</code>) with persistent volume
+                - easy backup and migration.</p>
             </div>
             <div class="tr-decision">
               <h4 class="tr-decision-title">4-Language Support</h4>
-              <p>Full i18n (en, he, ar, ru) with RTL support via <code>I18nManager.forceRTL()</code> - serving diverse municipal populations.</p>
+              <p>Full i18n (en, he, ar, ru) with RTL support via <code>I18nManager.forceRTL()</code> - serving diverse
+                municipal populations.</p>
             </div>
           </div>
         </div>
