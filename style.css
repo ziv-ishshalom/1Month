@@ -150,11 +150,12 @@ img {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, var(--primary), #9333EA);
+  background: var(--primary);
   color: #fff;
   border-radius: var(--radius-sm);
   font-size: 1.25rem;
   font-weight: 700;
+  margin-right: 6px;
 }
 
 .nav-name {
@@ -164,7 +165,7 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   list-style: none;
 }
 
