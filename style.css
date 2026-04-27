@@ -138,10 +138,12 @@ img {
 .nav-logo-img {
   height: 54px;
   object-fit: contain;
+  filter: invert(0.8) hue-rotate(180deg);
 }
 
 .footer-logo-img {
   height: 64px;
+  filter: invert(0.8) hue-rotate(180deg);
 }
 
 .nav-logo {
@@ -627,33 +629,27 @@ img {
 }
 
 .app-icon--b4ugo {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
 }
 
 .app-icon--cityfix {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #E07A5F, #F4A261);
 }
 
 .app-icon--tapching {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #F59E0B, #FBBF24);
 }
 
 .app-icon--stashcache {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #FF8C00, #FF9500);
 }
 
 .app-icon--socialhelper {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #3B82F6, #60A5FA);
 }
 
 .app-icon--doppel {
-  background: #EAEAEE;
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #8B5CF6, #A78BFA);
 }
 
 .app-meta {
