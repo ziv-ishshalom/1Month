@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="tech-review.css" />
@@ -21,7 +21,10 @@
 
 <body>
 
-  <!-- ============================== AMBIENT BG (Removed) ============================== -->
+  <!-- ============================== AMBIENT BG ============================== -->
+  <div class="ambient-orb ambient-orb--1"></div>
+  <div class="ambient-orb ambient-orb--2"></div>
+  <div class="ambient-orb ambient-orb--3"></div>
 
   <!-- ============================== NAVIGATION ============================== -->
   <nav class="nav scrolled" id="nav">
@@ -98,7 +101,6 @@
           <li><a href="#database" class="tr-toc-link">Database Design</a></li>
           <li><a href="#infrastructure" class="tr-toc-link">Infrastructure</a></li>
           <li><a href="#devops" class="tr-toc-link">DevOps & CI/CD</a></li>
-          <li><a href="#observability" class="tr-toc-link">Observability</a></li>
           <li><a href="#decisions" class="tr-toc-link">Key Decisions</a></li>
         </ul>
       </div>
@@ -697,100 +699,6 @@
           <h3 class="tr-card-title">Database Backups</h3>
           <div class="tr-callout">
             <strong>Nightly cron job</strong> runs <code>backup-db.sh</code> - PostGIS dump with timestamped filenames, stored on the VM's persistent disk.
-          </div>
-        </div>
-      </section>
-
-      <!-- ── Observability & Quality ── -->
-      <section class="tr-section" id="observability">
-        <div class="tr-section-header">
-          <span class="tr-section-icon">📡</span>
-          <h2 class="tr-section-title">Observability & Quality</h2>
-        </div>
-
-        <div class="tr-card">
-          <h3 class="tr-card-title">System Admin Portal — Platform Observability</h3>
-          <p class="tr-text">A dedicated <strong>Next.js System Admin portal</strong> (<code>app.cityfix.co.il</code>) provides platform-wide visibility. Separate from the municipality admin, this portal focuses on engineering operations:</p>
-
-          <div class="tr-feature-grid">
-            <div class="tr-feature">
-              <span class="tr-feature-icon">💓</span>
-              <div>
-                <strong>Health Dashboard</strong>
-                <p>Auto-refreshing (30s) liveness checks across <strong>5 Docker services</strong> (Admin Sys, Auth Service, Reports Service, Admin Web, Website). Per-service response time with color-coded latency bands: green (&lt;200ms), orange (200ms–1s), red (&gt;1s). Aggregate operational status banner.</p>
-              </div>
-            </div>
-            <div class="tr-feature">
-              <span class="tr-feature-icon">🚀</span>
-              <div>
-                <strong>CI/CD Dashboard</strong>
-                <p>GitHub Actions integration showing CI success rate, deploys this week, latest CI and deploy run numbers. Two pipeline views: <strong>CI Pipeline</strong> (lint, test, build) and <strong>Production Deploy</strong> (SSH → Docker Compose). Each run shows pass/fail status, commit hash, author, and age. Direct link to GitHub Actions.</p>
-              </div>
-            </div>
-            <div class="tr-feature">
-              <span class="tr-feature-icon">🔴</span>
-              <div>
-                <strong>Sentry Dashboard</strong>
-                <p>Integrated Sentry view tracking 4 projects: <code>cityfix-auth-service</code>, <code>cityfix-reports-service</code>, <code>cityfix-admin</code>, and <code>cityfix-mobile</code>. Shows unresolved and new error counts per project. Overview widget displays total Sentry errors (24h) alongside CI status and report counts.</p>
-              </div>
-            </div>
-            <div class="tr-feature">
-              <span class="tr-feature-icon">📚</span>
-              <div>
-                <strong>Taxonomy & Moderation</strong>
-                <p>Taxonomy management for report categories across all municipalities. Moderation pipeline configuration and monitoring for the AI content filtering stages (profanity, NSFW, PII).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tr-card">
-          <h3 class="tr-card-title">Error Tracking & Uptime</h3>
-          <div class="tr-table-wrap">
-            <table class="tr-table">
-              <thead>
-                <tr><th>Tool</th><th>Scope</th><th>Details</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Sentry</strong></td>
-                  <td>Backend (×2) + Admin + Mobile</td>
-                  <td><code>@sentry/nestjs</code> on auth-service and reports-service. <code>@sentry/react-native</code> on mobile. Admin dashboard Sentry tracking. Source maps uploaded in CI. Error counts surfaced in System Admin overview.</td>
-                </tr>
-                <tr>
-                  <td><strong>UptimeRobot</strong></td>
-                  <td>All 4 public domains</td>
-                  <td>60-second interval HTTP health checks on <code>cityfix.co.il</code>, <code>admin.cityfix.co.il</code>, <code>app.cityfix.co.il</code>, and <code>api.cityfix.co.il</code>. Instant Slack/email notifications on downtime. Public status page.</td>
-                </tr>
-                <tr>
-                  <td><strong>Docker Health Checks</strong></td>
-                  <td>6 containers</td>
-                  <td>Docker Compose <code>healthcheck</code> directives on all service containers. Post-deploy CI validation via SSH health check commands.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="tr-card">
-          <h3 class="tr-card-title">System Admin Overview</h3>
-          <p class="tr-text">The System Overview dashboard aggregates key platform signals into a single pane of glass:</p>
-          <div class="tr-table-wrap">
-            <table class="tr-table">
-              <thead>
-                <tr><th>Signal</th><th>Source</th><th>Description</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Active Cities</td><td>Database</td><td>Number of municipalities onboarded</td></tr>
-                <tr><td>Total Reports</td><td>Database</td><td>Aggregate civic reports across all cities</td></tr>
-                <tr><td>Reports Today</td><td>Database</td><td>24h report volume</td></tr>
-                <tr><td>CI Status</td><td>GitHub Actions API</td><td>Latest CI run pass/fail status</td></tr>
-                <tr><td>Sentry Errors</td><td>Sentry API</td><td>New unresolved errors in the last 24h</td></tr>
-                <tr><td>Pipeline Summary</td><td>GitHub Actions API</td><td>Last 3 CI runs with commit messages and status</td></tr>
-                <tr><td>Error Monitoring</td><td>Sentry API</td><td>Per-project (auth, reports, admin, mobile) error counts</td></tr>
-                <tr><td>Service Health</td><td>Health endpoints</td><td>5/5 services operational status with response times</td></tr>
-              </tbody>
-            </table>
           </div>
         </div>
       </section>

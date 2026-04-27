@@ -17,14 +17,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- ============================== AMBIENT BG (Removed) ============================== -->
+  <!-- ============================== AMBIENT BG ============================== -->
+  <div class="ambient-orb ambient-orb--1"></div>
+  <div class="ambient-orb ambient-orb--2"></div>
+  <div class="ambient-orb ambient-orb--3"></div>
 
   <!-- ============================== NAVIGATION ============================== -->
   <nav class="nav" id="nav">
@@ -38,8 +41,6 @@
         <li><a href="#apps" class="nav-link">Apps</a></li>
         <li><a href="#tech" class="nav-link">Tech Stack</a></li>
         <li><a href="#infrastructure" class="nav-link">Infrastructure</a></li>
-        <li><a href="#quality" class="nav-link">Quality</a></li>
-        <li><a href="#code" class="nav-link">Code</a></li>
         <li><a href="tech-review-b4ugo.html" class="nav-link">B4UGO Tech</a></li>
         <li><a href="tech-review-cityfix.html" class="nav-link">CityFix Tech</a></li>
         <li><a href="#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
@@ -53,17 +54,18 @@
   <!-- ============================== HERO ============================== -->
   <section class="hero" id="hero">
     <div class="hero-inner">
-      <div class="hero-badge">Architectural Leadership</div>
+      <div class="hero-badge">AI-First Development</div>
       <h1 class="hero-title">
-        From Architecture to Production.<br />
-        <span class="hero-highlight">At Scale.</span>
+        From Idea to App Store.<br />
+        <span class="hero-highlight">In One Month.</span>
       </h1>
       <p class="hero-subtitle">
-        Scalable cloud-native microservices built with AI-augmented workflows. Designed for enterprise resilience, high availability, and rapid team deployment.
+        One developer. One Month. A complete production app backed by a cloud-native microservices
+        architecture - scale-ready from day one, built and shipped entirely with AI-First methodologies.
       </p>
       <div class="hero-actions">
-        <a href="#apps" class="btn btn--primary">Explore the Architecture</a>
-        <a href="#philosophy" class="btn btn--ghost">The Methodology</a>
+        <a href="#apps" class="btn btn--primary">Explore the Portfolio</a>
+        <a href="#philosophy" class="btn btn--ghost">Our Approach</a>
       </div>
     </div>
 
@@ -92,31 +94,37 @@
   <section class="section" id="philosophy">
     <div class="container">
       <span class="section-label reveal">The 1Month Method</span>
-      <h2 class="section-title reveal">Enterprise Resilience.<br />Rapid Deployment.</h2>
+      <h2 class="section-title reveal">Move Fast.<br />Ship Real Products.</h2>
       <p class="section-subtitle reveal">
-        A proven methodology combining architectural intuition with AI-augmented engineering. Accelerating development timelines while maintaining strict security postures, high ROI, and system maintainability.
+        1Month is a business initiative proving that with AI-augmented development,
+        a solo developer can architect, build, and ship production-grade applications
+        in a fraction of the traditional timeline - without cutting corners on quality.
       </p>
 
       <div class="philosophy-grid">
         <div class="philosophy-card reveal">
           <div class="philosophy-icon">⚡</div>
-          <h3>Strategic AI Integration</h3>
-          <p>Harnessing AI to accelerate full-stack delivery. Emphasizing structured design patterns and rigorous code reviews to achieve 10× velocity without sacrificing quality.</p>
+          <h3>AI-Augmented Development</h3>
+          <p>AI pair-programming from architecture to deployment. Not vibe-coding - structured, reviewed,
+            production-grade code at 10× velocity.</p>
         </div>
         <div class="philosophy-card reveal">
           <div class="philosophy-icon">🏗️</div>
-          <h3>Scalable Architecture</h3>
-          <p>Designing robust microservices, real-time spatial pipelines, and offline-first edge applications built on reliable, enterprise-grade cloud foundations.</p>
+          <h3>Real Architecture</h3>
+          <p>Microservices, PostGIS spatial queries, AI moderation pipelines, CloudKit sync - no toy projects.
+            Enterprise-grade patterns in every build.</p>
         </div>
         <div class="philosophy-card reveal">
-          <div class="philosophy-icon">📈</div>
-          <h3>ROI-Driven Engineering</h3>
-          <p>Aligning technical strategy with commercial goals. Prioritizing features that drive business metrics, minimize technical debt, and ensure long-term system health.</p>
+          <div class="philosophy-icon">🚀</div>
+          <h3>Ship to Users</h3>
+          <p>Every app is on the App Store or deployed to production. CI/CD pipelines, health monitoring, and real-world
+            usage - not just demos.</p>
         </div>
         <div class="philosophy-card reveal">
           <div class="philosophy-icon">🔒</div>
-          <h3>Zero-Trust Security</h3>
-          <p>Implementing OAuth, strict JWT RBAC, biometric guards, and automated PII redaction. Building security compliance natively into the architectural blueprint.</p>
+          <h3>Security First</h3>
+          <p>OAuth, JWT RBAC, biometric auth, SQL injection audits, PII detection - security is designed in from day
+            one, not bolted on later.</p>
         </div>
       </div>
     </div>
@@ -128,7 +136,8 @@
       <span class="section-label reveal">The Architect</span>
       <h2 class="section-title reveal">25 Years of Engineering Leadership.</h2>
       <p class="section-subtitle reveal">
-        With over two decades spent scaling high-performance engineering organizations, my focus is on designing enterprise systems that align deep technical rigor with measurable business outcomes.
+        Before launching 1Month, I spent over two decades scaling teams, architecting enterprise systems, 
+        and driving technical modernization. The 1Month methodology is the distillation of that experience applied to AI-First development.
       </p>
 
       <div class="about-grid">
@@ -136,16 +145,16 @@
         <div class="bio-card reveal">
           <p class="bio-text">
             <span class="bio-highlight">I am an Engineering Director</span> 
-            with a proven track record of architecting large-scale software platforms and scaling global R&D teams. I specialize in leading through leaders—establishing strong engineering cultures that consistently deliver complex, high-stakes solutions.
+            with a proven record of building and scaling global R&D organizations and delivering high-stakes software. I specialize in leading through leaders, notably achieving 100% staff retention while doubling group size.
           </p>
           <p class="bio-text">
-            Drawing from my military background as a <span class="bio-highlight">Tank Commander</span>, I bring a decisive, calm approach to crisis management. I foster resilience within teams, transforming incident response from a source of stress into a structured, predictable process.
+            My military background as a <span class="bio-highlight">Tank Commander</span> taught me how to lead gracefully and decisively in extreme crisis situations, a philosophy I actively bring to incident management and Agile delivery.
           </p>
           <p class="bio-text">
-            Holding a B.A. in Business Administration, I approach architecture as an enabler for growth. I prioritize system reliability, security posture, and cross-functional alignment to ensure every technical investment yields strong commercial ROI.
+            Armed with a B.A. in Business Administration, my focus has always been the intersection of technology and business ROI - whether leading development at B2B2C startups or directing large-scale corporate transformations. 
           </p>
           <p class="bio-text">
-            Through the <span class="bio-highlight">1Month</span> initiative, I am pushing the boundaries of modern engineering velocity, leveraging AI-augmented workflows to rapidly deploy highly secure, scale-ready architectures.
+            Now, through the <span class="bio-highlight">1Month</span> initiative, I am exploring the absolute limits of productivity by pairing decades of architectural intuition with modern AI development tools.
           </p>
         </div>
 
@@ -717,628 +726,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== QUALITY ASSURANCE ============================== -->
-  <section class="section" id="quality">
-    <div class="container">
-      <span class="section-label reveal">Quality Assurance</span>
-      <h2 class="section-title reveal">Tested. Load-Tested.<br />Monitored 24/7.</h2>
-      <p class="section-subtitle reveal">
-        Building fast doesn't mean cutting corners. Every platform has automated tests in CI,
-        load testing scripts, real-time error tracking, and uptime monitoring.
-      </p>
-
-      <div class="quality-grid">
-
-        <!-- Testing Strategy -->
-        <div class="quality-card quality-card--testing reveal">
-          <div class="quality-card-header">
-            <span class="quality-icon">🧪</span>
-            <h3 class="quality-card-title">Testing Strategy</h3>
-          </div>
-          <p class="quality-desc">Every push to <code>main</code> triggers a full CI matrix across all 5 apps.
-            Tests gate every merge and deployment.</p>
-
-          <div class="quality-stats-row">
-            <div class="quality-stat">
-              <span class="quality-stat-number">419</span>
-              <span class="quality-stat-label">Total Tests</span>
-            </div>
-            <div class="quality-stat">
-              <span class="quality-stat-number">32</span>
-              <span class="quality-stat-label">Test Suites</span>
-            </div>
-            <div class="quality-stat">
-              <span class="quality-stat-number">0</span>
-              <span class="quality-stat-label">Failures</span>
-            </div>
-          </div>
-
-          <div class="quality-breakdown">
-            <div class="quality-breakdown-title">Coverage by App</div>
-            <div class="quality-bar-group">
-              <div class="quality-bar-row">
-                <span class="quality-bar-label">Mobile</span>
-                <div class="quality-bar-track">
-                  <div class="quality-bar-fill quality-bar--mobile" style="width: 30%"></div>
-                </div>
-                <span class="quality-bar-value">126</span>
-              </div>
-              <div class="quality-bar-row">
-                <span class="quality-bar-label">Admin Web</span>
-                <div class="quality-bar-track">
-                  <div class="quality-bar-fill quality-bar--web" style="width: 28%"></div>
-                </div>
-                <span class="quality-bar-value">118</span>
-              </div>
-              <div class="quality-bar-row">
-                <span class="quality-bar-label">Scan Service</span>
-                <div class="quality-bar-track">
-                  <div class="quality-bar-fill quality-bar--scan" style="width: 19%"></div>
-                </div>
-                <span class="quality-bar-value">79</span>
-              </div>
-              <div class="quality-bar-row">
-                <span class="quality-bar-label">Items Service</span>
-                <div class="quality-bar-track">
-                  <div class="quality-bar-fill quality-bar--items" style="width: 15%"></div>
-                </div>
-                <span class="quality-bar-value">63</span>
-              </div>
-              <div class="quality-bar-row">
-                <span class="quality-bar-label">Auth Service</span>
-                <div class="quality-bar-track">
-                  <div class="quality-bar-fill quality-bar--auth" style="width: 8%"></div>
-                </div>
-                <span class="quality-bar-value">33</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="quality-details">
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">⚙️</span>
-              <span>Unit & integration tests via <strong>Jest</strong> across all NestJS services + mobile</span>
-            </div>
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">🧠</span>
-              <span>Critical background task logic extracted into <strong>pure functions</strong> for deterministic testing</span>
-            </div>
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">🔄</span>
-              <span>CI matrix runs <strong>all 5 apps in parallel</strong> on every push — tests gate every deploy</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Load Testing -->
-        <div class="quality-card quality-card--load reveal">
-          <div class="quality-card-header">
-            <span class="quality-icon">⚡</span>
-            <h3 class="quality-card-title">Load Testing</h3>
-          </div>
-          <p class="quality-desc">k6 scripts validate that the B4UGO serverless backend handles real-world traffic
-            patterns without degradation.</p>
-
-          <div class="quality-stats-row">
-            <div class="quality-stat">
-              <span class="quality-stat-number">k6</span>
-              <span class="quality-stat-label">Load Runner</span>
-            </div>
-            <div class="quality-stat">
-              <span class="quality-stat-number">~48%</span>
-              <span class="quality-stat-label">Cache Hit Rate</span>
-            </div>
-            <div class="quality-stat">
-              <span class="quality-stat-number">5</span>
-              <span class="quality-stat-label">Services Tested</span>
-            </div>
-          </div>
-
-          <div class="quality-details">
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">📈</span>
-              <span>Ramp-up scenarios testing <strong>health, auth, items, stores & scan</strong> endpoints concurrently</span>
-            </div>
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">🛡️</span>
-              <span>Rate limiting validation — confirms <strong>429 throttling</strong> behaves correctly under burst</span>
-            </div>
-            <div class="quality-detail-item">
-              <span class="quality-detail-icon">🗂️</span>
-              <span>Scripts live in <code>tests/load/</code> — part of the monorepo, versioned alongside services</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Observability -->
-        <div class="quality-card quality-card--observability reveal">
-          <div class="quality-card-header">
-            <span class="quality-icon">📡</span>
-            <h3 class="quality-card-title">Observability & Admin Dashboards</h3>
-            <span class="quality-live-dot"></span>
-          </div>
-          <p class="quality-desc">How I monitor 6 production apps without a team — custom-built admin dashboards
-            with real-time health checks, error tracking, analytics, and CI/CD visibility. Every platform has its own
-            System Admin portal.</p>
-
-          <div class="quality-monitoring-grid">
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">💓</span>
-                <strong>API Health Monitor</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>B4UGO: real-time liveness checks on <strong>8 services</strong> with 30s auto-refresh</li>
-                <li>CityFix: health dashboard tracking <strong>5 services</strong> with latency bands (Fast / Moderate / Slow)</li>
-                <li>Per-service response time, status, and last-checked timestamp</li>
-                <li>Aggregate uptime % and average response time</li>
-              </ul>
-            </div>
-
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">🔴</span>
-                <strong>Sentry Integration</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>B4UGO: <code>@sentry/nestjs</code> on 3 backends + <code>@sentry/react-native</code> on mobile</li>
-                <li>CityFix: dedicated Sentry dashboard tracking 4 projects (auth, reports, admin, mobile)</li>
-                <li>Unresolved vs. new issues (24h) surfaced directly in the admin UI</li>
-                <li>Source maps uploaded via CI for readable stack traces</li>
-              </ul>
-            </div>
-
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">🚀</span>
-                <strong>CI/CD & DevOps</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>GitHub Actions pipeline status and deployment history in admin UI</li>
-                <li>Test count tracking (419 tests / 32 suites) and CI success rate</li>
-                <li>B4UGO: EAS mobile build status and submission history</li>
-                <li>CityFix: CI Pipeline + Production Deploy run logs with commit-level detail</li>
-              </ul>
-            </div>
-
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">📊</span>
-                <strong>Analytics & Telemetry</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>B4UGO: DAU/WAU/MAU metrics, user stickiness ratio, event trends (7d/30d/90d)</li>
-                <li>Event tracking: <code>scan_triggered</code>, <code>app_open</code>, <code>item_added</code>, <code>settings_changed</code></li>
-                <li>Cache hit rate, average latency, and scan volume monitoring</li>
-                <li>Growth & activity dashboards with completion rate tracking</li>
-              </ul>
-            </div>
-
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">🔍</span>
-                <strong>Scan Debug Logs</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>Per-user trace-level scan execution debugging</li>
-                <li>Gate decision visibility (Auto / Background / No Stores)</li>
-                <li>Speed, tier, and GPS mode logged per scan event</li>
-                <li>Filterable by type and outcome with CSV export and pagination</li>
-              </ul>
-            </div>
-
-            <div class="quality-monitor-card">
-              <div class="quality-monitor-header">
-                <span class="quality-monitor-icon">🟢</span>
-                <strong>UptimeRobot</strong>
-              </div>
-              <ul class="quality-monitor-list">
-                <li>60-second interval HTTP health checks on CityFix</li>
-                <li>Monitors all 4 public domains & API endpoints</li>
-                <li>Instant Slack/email alerts on downtime</li>
-                <li>Public status page for transparency</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== CODE SHOWCASE ============================== -->
-  <section class="section section--alt" id="code">
-    <div class="container">
-      <span class="section-label reveal">Code Showcase</span>
-      <h2 class="section-title reveal">Show, Don't Tell.</h2>
-      <p class="section-subtitle reveal">
-        Real production patterns from the B4UGO platform — annotated to explain the why, not just the what.
-      </p>
-
-      <!-- Lock overlay -->
-      <div class="code-lock" id="code-lock">
-        <div class="code-lock-inner">
-          <span class="code-lock-icon">🔒</span>
-          <h3 class="code-lock-title">Protected Content</h3>
-          <p class="code-lock-desc">Enter the access code to view production code patterns.</p>
-          <div class="code-pin-wrap">
-            <input type="password" id="code-pin" class="code-pin-input" maxlength="4" placeholder="····" inputmode="numeric" autocomplete="off" />
-            <button class="code-pin-btn" id="code-pin-btn">Unlock</button>
-          </div>
-          <p class="code-pin-error" id="code-pin-error"></p>
-        </div>
-      </div>
-
-      <!-- Unlocked content -->
-      <div class="code-content" id="code-content" style="display:none;">
-        <div class="code-timer-bar">
-          <span class="code-timer-label">🔓 Auto-locks in <strong id="code-countdown">60</strong>s</span>
-          <div class="code-timer-track">
-            <div class="code-timer-fill" id="code-timer-fill"></div>
-          </div>
-        </div>
-
-        <!-- Snippet 1: RBAC Auth Guards -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">RBAC Auth Guard Stack</h3>
-            <span class="code-snippet-file">auth-service / items-service / scan-service</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> Every admin endpoint uses a consistent 3-layer guard stack — JWT validation, role extraction, 
-            and decorator-driven authorization. 70 endpoints were secured in a single RBAC remediation pass across all 3 services.
-          </div>
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// roles.decorator.ts — Custom decorator for declarative role requirements</span>
-<span class="code-keyword">export const</span> ROLES_KEY = <span class="code-string">'roles'</span>;
-<span class="code-keyword">export const</span> <span class="code-fn">Roles</span> = (...roles: <span class="code-type">string</span>[]) =>
-  <span class="code-fn">SetMetadata</span>(ROLES_KEY, roles);
-
-<span class="code-comment">// roles.guard.ts — Reflector-based guard reads @Roles() metadata</span>
-<span class="code-decorator">@Injectable</span>()
-<span class="code-keyword">export class</span> <span class="code-type">RolesGuard</span> <span class="code-keyword">implements</span> <span class="code-type">CanActivate</span> {
-  <span class="code-fn">constructor</span>(<span class="code-keyword">private</span> reflector: <span class="code-type">Reflector</span>) {}
-
-  <span class="code-fn">canActivate</span>(context: <span class="code-type">ExecutionContext</span>): <span class="code-type">boolean</span> {
-    <span class="code-keyword">const</span> required = <span class="code-keyword">this</span>.reflector.<span class="code-fn">getAllAndOverride</span>&lt;<span class="code-type">string</span>[]&gt;(
-      ROLES_KEY, [context.<span class="code-fn">getHandler</span>(), context.<span class="code-fn">getClass</span>()]
-    );
-    <span class="code-keyword">if</span> (!required) <span class="code-keyword">return true</span>;
-    <span class="code-keyword">const</span> { user } = context.<span class="code-fn">switchToHttp</span>().<span class="code-fn">getRequest</span>();
-    <span class="code-keyword">return</span> required.<span class="code-fn">includes</span>(user.role);
-  }
-}
-
-<span class="code-comment">// Usage: class-level guards + method-level decorator</span>
-<span class="code-decorator">@Controller</span>(<span class="code-string">'admin/analytics'</span>)
-<span class="code-decorator">@UseGuards</span>(<span class="code-type">JwtAuthGuard</span>, <span class="code-type">RolesGuard</span>)  <span class="code-comment">// ← Guard stack on every route</span>
-<span class="code-decorator">@Roles</span>(<span class="code-string">'ADMIN'</span>)                      <span class="code-comment">// ← Declarative: only ADMIN role</span>
-<span class="code-keyword">export class</span> <span class="code-type">AnalyticsController</span> {
-  <span class="code-decorator">@Get</span>(<span class="code-string">'stats'</span>)
-  <span class="code-fn">getStats</span>() { ... }    <span class="code-comment">// Inherits class-level guards</span>
-}</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why class-level?</strong> Applying guards at the controller class eliminates the risk of forgetting 
-            <code>@UseGuards()</code> on individual routes — a common source of privilege escalation bugs in NestJS apps.</span>
-          </div>
-        </details>
-
-        <!-- Snippet 2: PostGIS Spatial Scan -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">PostGIS Spatial Scan Pipeline</h3>
-            <span class="code-snippet-file">scan-service / stores.service.ts</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> The scan funnel resolves shopping items to nearby stores using a 5-phase pipeline: 
-            AI categorization → VIP store matching → Redis cache check → Google Places API → result caching.
-          </div>
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// Phase 1-2: Categorize item + check VIP stores first</span>
-<span class="code-keyword">const</span> category = <span class="code-keyword">await</span> <span class="code-keyword">this</span>.aiCategorizer.<span class="code-fn">categorize</span>(item.text);
-<span class="code-keyword">const</span> vipStores = <span class="code-keyword">await</span> <span class="code-keyword">this</span>.prisma.<span class="code-fn">$queryRaw</span><span class="code-string">`
-  SELECT *, ST_Distance(
-    location::geography,
-    ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography
-  ) as distance
-  FROM stores
-  WHERE ST_DWithin(
-    location::geography,
-    ST_SetSRID(ST_MakePoint(${lng}, ${lat}), 4326)::geography,
-    ${radiusMeters}            -- user's scan radius
-  )
-  AND is_vip = true            -- VIP stores checked first
-  AND categories @> ARRAY[${category}]
-  ORDER BY distance ASC
-  LIMIT ${maxResults}
-`</span>;
-
-<span class="code-comment">// Phase 3: Redis cache — avoid redundant Google API calls</span>
-<span class="code-keyword">const</span> cacheKey = <span class="code-fn">md5</span>(<span class="code-string">`</span>${item.text}<span class="code-string">:</span>${lat}<span class="code-string">:</span>${lng}<span class="code-string">:</span>${radius}<span class="code-string">`</span>);
-<span class="code-keyword">const</span> cached = <span class="code-keyword">await</span> <span class="code-keyword">this</span>.redis.<span class="code-fn">get</span>(<span class="code-string">`SCAN:GOOGLE:ITEM:</span>${cacheKey}<span class="code-string">`</span>);
-<span class="code-keyword">if</span> (cached) <span class="code-keyword">return</span> JSON.<span class="code-fn">parse</span>(cached);
-
-<span class="code-comment">// Phase 4-5: Google Places API → cache for future users</span>
-<span class="code-keyword">const</span> results = <span class="code-keyword">await</span> <span class="code-keyword">this</span>.<span class="code-fn">fetchGooglePlaces</span>(item, category, lat, lng);
-<span class="code-keyword">await</span> <span class="code-keyword">this</span>.redis.<span class="code-fn">set</span>(cacheKey, JSON.<span class="code-fn">stringify</span>(results), <span class="code-string">'EX'</span>, <span class="code-number">86400</span>);
-<span class="code-keyword">return</span> results;</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why VIP-first?</strong> Partner stores bypass the Google API entirely — reducing API costs and 
-            guaranteeing instant results. The <code>ST_DWithin</code> spatial index makes the PostGIS query sub-millisecond.</span>
-          </div>
-        </details>
-
-        <!-- Snippet 3: Background Task 7-Gate Pipeline -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">7-Gate Notification State Machine</h3>
-            <span class="code-snippet-file">mobile / backgroundTaskLogic.ts</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> Background scan notifications pass through 7 strict gates to prevent spam. 
-            All decision logic lives in <strong>pure functions</strong> (no Expo APIs) — enabling 47 deterministic unit tests.
-          </div>
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// evaluateNotificationGates() — Pure function, fully unit-tested</span>
-<span class="code-keyword">export function</span> <span class="code-fn">evaluateNotificationGates</span>(params: <span class="code-type">GateParams</span>): <span class="code-type">GateResult</span> {
-  <span class="code-comment">// Gate 3: Spatial cooldown — same stores + haven't moved enough?</span>
-  <span class="code-keyword">const</span> fingerprint = stores.<span class="code-fn">map</span>(s => s.id).<span class="code-fn">sort</span>().<span class="code-fn">join</span>(<span class="code-string">','</span>);
-  <span class="code-keyword">if</span> (fingerprint === lastFingerprint) {
-    <span class="code-keyword">const</span> moved = <span class="code-fn">calculateDistance</span>(lat, lng, lastLat, lastLng);
-    <span class="code-keyword">if</span> (moved < minRefreshDistance)
-      <span class="code-keyword">return</span> { gate: <span class="code-number">3</span>, action: <span class="code-string">'skip'</span>, reason: <span class="code-string">'spatial_cooldown'</span> };
-  }
-
-  <span class="code-comment">// Gate 4: Time dedup — same stores + too recent?</span>
-  <span class="code-keyword">if</span> (fingerprint === lastFingerprint) {
-    <span class="code-keyword">const</span> elapsed = (Date.<span class="code-fn">now</span>() - lastNotifTime) / <span class="code-number">60000</span>;
-    <span class="code-keyword">if</span> (elapsed < sameStoreCooldownMin)
-      <span class="code-keyword">return</span> { gate: <span class="code-number">4</span>, action: <span class="code-string">'skip'</span>, reason: <span class="code-string">'time_dedup'</span> };
-  }
-
-  <span class="code-comment">// Gate 5: Pause — user manually paused? Stop GPS entirely</span>
-  <span class="code-keyword">if</span> (notificationsPaused)
-    <span class="code-keyword">return</span> { gate: <span class="code-number">5</span>, action: <span class="code-string">'stop_gps'</span>, reason: <span class="code-string">'paused'</span> };
-
-  <span class="code-comment">// Gate 6: Quiet Hours — scan runs, notification suppressed</span>
-  <span class="code-keyword">if</span> (<span class="code-fn">isInQuietHours</span>(quietConfig))
-    <span class="code-keyword">return</span> { gate: <span class="code-number">6</span>, action: <span class="code-string">'skip'</span>, reason: <span class="code-string">'quiet_hours'</span> };
-
-  <span class="code-comment">// Gate 7: All gates passed → notify user</span>
-  <span class="code-keyword">return</span> { gate: <span class="code-number">7</span>, action: <span class="code-string">'notify'</span>, fingerprint, lat, lng };
-}</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why pure functions?</strong> The 572-line <code>backgroundTask.ts</code> orchestrator handles 
-            side effects (storage, GPS, notifications). All decisions are delegated to <code>backgroundTaskLogic.ts</code> — 
-            testable without mocking Expo APIs, React Native, or AsyncStorage.</span>
-          </div>
-
-          <!-- 7-Gate Diagram -->
-          <div class="code-diagram">
-            <div class="code-diagram-title">7-Gate Notification Pipeline</div>
-            <div class="gate-flow">
-              <div class="gate-node gate-node--input">📡 GPS fires</div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--check">Gate 1: Active items?</div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--check">Gate 2: Stores found?</div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--check">Gate 3: Spatial cooldown<span class="gate-detail">Same stores + haven't moved?</span></div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--check">Gate 4: Time dedup<span class="gate-detail">Same stores + &lt;5 min?</span></div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--warn">Gate 5: Paused?<span class="gate-detail">→ Stop GPS entirely</span></div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--warn">Gate 6: Quiet Hours?<span class="gate-detail">→ Skip notif, keep GPS</span></div>
-              <div class="gate-arrow">▼</div>
-              <div class="gate-node gate-node--pass">✅ Gate 7: NOTIFY</div>
-            </div>
-          </div>
-        </details>
-
-        <!-- Snippet 4: Smart Driving State Machine -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">Smart Driving — 3-Tier Hysteresis</h3>
-            <span class="code-snippet-file">mobile / backgroundTaskLogic.ts</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> GPS speed automatically adjusts the scan radius across 3 tiers. 
-            Upgrades require N high-speed events in a rolling window. Reverts require consecutive low-speed readings (hysteresis) to prevent ping-ponging.
-          </div>
-
-          <!-- Smart Driving Diagram -->
-          <div class="code-diagram">
-            <div class="code-diagram-title">Smart Driving State Machine</div>
-            <div class="driving-diagram">
-              <div class="driving-tier">
-                <div class="driving-tier-node driving-tier--ped">
-                  <strong>🚶 Pedestrian</strong>
-                  <span>User's radius (e.g. 100m)</span>
-                  <span>distanceInterval: 20m</span>
-                </div>
-                <div class="driving-arrows">
-                  <div class="driving-arrow-down">&gt;15 km/h × 3 events →</div>
-                  <div class="driving-arrow-up">← &lt;7 km/h × 2 consecutive</div>
-                </div>
-                <div class="driving-tier-node driving-tier--city">
-                  <strong>🚗 City Driving</strong>
-                  <span>500m refresh radius</span>
-                  <span>distanceInterval: 100m</span>
-                </div>
-                <div class="driving-arrows">
-                  <div class="driving-arrow-down">&gt;60 km/h × 3 events →</div>
-                  <div class="driving-arrow-up">← &lt;40 km/h × 2 consecutive</div>
-                </div>
-                <div class="driving-tier-node driving-tier--commuter">
-                  <strong>🛣️ Commuter</strong>
-                  <span>2000m refresh radius</span>
-                  <span>distanceInterval: 500m</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// checkPedestrianToCityUpgrade() — Pure, unit-tested</span>
-<span class="code-keyword">export function</span> <span class="code-fn">checkPedestrianToCityUpgrade</span>(
-  speedKmh: <span class="code-type">number</span>,
-  timestamps: <span class="code-type">number</span>[],
-  settings: <span class="code-type">ServerSettings</span>
-): { upgrade: <span class="code-type">boolean</span>; timestamps: <span class="code-type">number</span>[] } {
-  <span class="code-keyword">const</span> now = Date.<span class="code-fn">now</span>();
-  <span class="code-keyword">const</span> windowMs = settings.drivingNotifWindowMin * <span class="code-number">60000</span>;
-
-  <span class="code-comment">// Filter to events within the rolling window</span>
-  <span class="code-keyword">const</span> recent = timestamps.<span class="code-fn">filter</span>(t => now - t < windowMs);
-
-  <span class="code-keyword">if</span> (speedKmh > settings.drivingSpeedKmh) {
-    recent.<span class="code-fn">push</span>(now);
-    <span class="code-keyword">if</span> (recent.length >= settings.drivingNotifCount) {
-      <span class="code-keyword">return</span> { upgrade: <span class="code-keyword">true</span>, timestamps: [] }; <span class="code-comment">// Reset on upgrade</span>
-    }
-  }
-  <span class="code-keyword">return</span> { upgrade: <span class="code-keyword">false</span>, timestamps: recent };
-}
-
-<span class="code-comment">// checkCommuterToCityRevert() — Hysteresis prevents ping-pong</span>
-<span class="code-keyword">export function</span> <span class="code-fn">checkCommuterToCityRevert</span>(
-  speedKmh: <span class="code-type">number</span>,
-  revertTimestamps: <span class="code-type">number</span>[],
-  settings: <span class="code-type">ServerSettings</span>
-): { revert: <span class="code-type">boolean</span>; timestamps: <span class="code-type">number</span>[] } {
-  <span class="code-keyword">if</span> (speedKmh >= settings.commuterRevertSpeedKmh) {
-    <span class="code-keyword">return</span> { revert: <span class="code-keyword">false</span>, timestamps: [] }; <span class="code-comment">// Reset counter</span>
-  }
-  <span class="code-keyword">const</span> updated = [...revertTimestamps, Date.<span class="code-fn">now</span>()];
-  <span class="code-keyword">return</span> {
-    revert: updated.length >= settings.commuterRevertCount,
-    timestamps: updated
-  };
-}</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why hysteresis?</strong> Without consecutive-reading requirements, a single slow GPS reading 
-            at a traffic light would revert Commuter → City, then immediately re-upgrade — causing notification spam 
-            and GPS restart thrashing. Server-controlled thresholds allow tuning without app updates.</span>
-          </div>
-        </details>
-
-        <!-- Snippet 5: CityFix AI Moderation Pipeline -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">AI Moderation Pipeline</h3>
-            <span class="code-snippet-file">CityFix / reports-service / upload.interceptor.ts</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> Every civic report passes through a 5-stage AI pipeline <strong>synchronously at upload time</strong>. 
-            Bad content never reaches the database. Runs on-device TensorFlow.js + Tesseract.js OCR inside a NestJS interceptor.
-          </div>
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// 5-Stage Report Upload Pipeline (NestJS Interceptor)</span>
-
-<span class="code-comment">// Stage 1: Text Moderation — reject abusive descriptions</span>
-<span class="code-keyword">const</span> hasProfanity = <span class="code-fn">leoProfanity</span>.<span class="code-fn">check</span>(dto.title + <span class="code-string">' '</span> + dto.description);
-<span class="code-keyword">if</span> (hasProfanity)
-  <span class="code-keyword">throw new</span> <span class="code-type">BadRequestException</span>(<span class="code-string">'Content contains inappropriate language'</span>);
-
-<span class="code-comment">// Stage 2: Image Optimization — resize + WebP conversion</span>
-<span class="code-keyword">const</span> optimized = <span class="code-keyword">await</span> sharp(file.buffer)
-  .<span class="code-fn">resize</span>({ width: <span class="code-number">1200</span>, withoutEnlargement: <span class="code-keyword">true</span> })
-  .<span class="code-fn">webp</span>({ quality: <span class="code-number">80</span> })
-  .<span class="code-fn">toBuffer</span>();
-
-<span class="code-comment">// Stage 3: OCR PII Detection — scan for license plates, IDs</span>
-<span class="code-keyword">const</span> ocrResult = <span class="code-keyword">await</span> Tesseract.<span class="code-fn">recognize</span>(optimized, <span class="code-string">'eng+heb'</span>);
-<span class="code-keyword">const</span> piiRegions = ocrResult.data.words
-  .<span class="code-fn">filter</span>(w => w.confidence > <span class="code-number">60</span>)
-  .<span class="code-fn">map</span>(w => w.bbox);  <span class="code-comment">// Bounding boxes of detected text</span>
-
-<span class="code-comment">// Stage 3b: Blur PII regions using Sharp composite</span>
-<span class="code-keyword">let</span> processed = optimized;
-<span class="code-keyword">for</span> (<span class="code-keyword">const</span> box <span class="code-keyword">of</span> piiRegions) {
-  processed = <span class="code-keyword">await</span> sharp(processed)
-    .<span class="code-fn">extract</span>({ left: box.x0, top: box.y0,
-              width: box.x1 - box.x0, height: box.y1 - box.y0 })
-    .<span class="code-fn">blur</span>(<span class="code-number">20</span>)  <span class="code-comment">// Heavy Gaussian blur on PII region</span>
-    .<span class="code-fn">toBuffer</span>();
-}
-
-<span class="code-comment">// Stage 4: NSFW Content Detection — TensorFlow.js</span>
-<span class="code-keyword">const</span> predictions = <span class="code-keyword">await</span> nsfwModel.<span class="code-fn">classify</span>(processed);
-<span class="code-keyword">const</span> nsfw = predictions.<span class="code-fn">find</span>(p =>
-  p.className === <span class="code-string">'Porn'</span> && p.probability > <span class="code-number">0.7</span>
-);
-<span class="code-keyword">if</span> (nsfw) <span class="code-keyword">throw new</span> <span class="code-type">BadRequestException</span>(<span class="code-string">'Inappropriate image'</span>);
-
-<span class="code-comment">// Stage 5: Commit — safe, blurred, optimized WebP → disk + DB</span>
-<span class="code-keyword">await</span> fs.<span class="code-fn">writeFile</span>(uploadPath, processed);
-<span class="code-keyword">return</span> <span class="code-keyword">await</span> <span class="code-keyword">this</span>.prisma.report.<span class="code-fn">create</span>({ data: { ...dto, imageUrl } });</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why synchronous?</strong> Processing at upload time (not via a queue) means bad content is <strong>never persisted</strong>.
-            Trade-off: NSFWJS pulls heavy TensorFlow node bindings — container memory must be ≥1.5 GB to avoid OOM under load.</span>
-          </div>
-        </details>
-
-        <!-- Snippet 6: OAuth State Guards -->
-        <details class="code-snippet reveal">
-          <summary class="code-snippet-header">
-            <span class="code-snippet-lang">TypeScript</span>
-            <h3 class="code-snippet-title">OAuth State Guards — Firebase Cookie Fix</h3>
-            <span class="code-snippet-file">auth-service / guards</span>
-          </summary>
-          <div class="code-snippet-annotation">
-            <strong>Pattern:</strong> Firebase Hosting strips all cookies except <code>__session</code>. Standard Passport.js session-based 
-            state verification breaks. Custom guards explicitly pass OAuth state through query params instead of relying on cookies.
-          </div>
-          <pre class="code-block"><code class="language-typescript"><span class="code-comment">// Problem: Firebase Hosting strips session cookies</span>
-<span class="code-comment">// → Passport's OAuth state verification fails</span>
-<span class="code-comment">// Solution: Custom guard passes state via query params</span>
-
-<span class="code-decorator">@Injectable</span>()
-<span class="code-keyword">export class</span> <span class="code-type">GoogleStateAuthGuard</span> <span class="code-keyword">extends</span> <span class="code-fn">AuthGuard</span>(<span class="code-string">'google'</span>) {
-  <span class="code-fn">getAuthenticateOptions</span>(context: <span class="code-type">ExecutionContext</span>) {
-    <span class="code-keyword">const</span> request = context.<span class="code-fn">switchToHttp</span>().<span class="code-fn">getRequest</span>();
-    <span class="code-keyword">const</span> state = request.query.state;
-    <span class="code-keyword">return</span> {
-      state,                          <span class="code-comment">// Pass to Google OAuth</span>
-      accessType: <span class="code-string">'offline'</span>,           <span class="code-comment">// Refresh tokens</span>
-      prompt: <span class="code-string">'consent'</span>,               <span class="code-comment">// Force consent screen</span>
-    };
-  }
-}
-
-<span class="code-comment">// Callback: state tells us where the request originated</span>
-<span class="code-decorator">@Get</span>(<span class="code-string">'google/callback'</span>)
-<span class="code-decorator">@UseGuards</span>(<span class="code-fn">AuthGuard</span>(<span class="code-string">'google'</span>))
-<span class="code-keyword">async</span> <span class="code-fn">googleCallback</span>(<span class="code-decorator">@Req</span>() req, <span class="code-decorator">@Res</span>() res) {
-  <span class="code-keyword">const</span> state = JSON.<span class="code-fn">parse</span>(req.query.state || <span class="code-string">'{}'</span>);
-
-  <span class="code-keyword">if</span> (state.isMobile) {
-    <span class="code-comment">// Mobile app → deep link with tokens</span>
-    <span class="code-keyword">return</span> res.<span class="code-fn">redirect</span>(
-      <span class="code-string">`b4ugo://auth/callback?token=</span>${token}<span class="code-string">`</span>
-    );
-  }
-  <span class="code-comment">// Admin web → set __session cookie + redirect</span>
-  res.<span class="code-fn">cookie</span>(<span class="code-string">'__session'</span>, token, { httpOnly: <span class="code-keyword">true</span> });
-  <span class="code-keyword">return</span> res.<span class="code-fn">redirect</span>(<span class="code-string">'/dashboard'</span>);
-}</code></pre>
-          <div class="code-snippet-callout">
-            <span class="code-callout-icon">💡</span>
-            <span><strong>Why this matters:</strong> Without this guard, the backend can't distinguish mobile from web OAuth flows —
-            it would redirect a mobile user to a browser dashboard or set a cookie the app can't read. The <code>state</code> param 
-            carries <code>isMobile</code> and <code>redirectUri</code> through the entire OAuth round-trip.</span>
-          </div>
-        </details>
       </div>
     </div>
   </section>
